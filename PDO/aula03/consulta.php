@@ -2,7 +2,7 @@
 
 require("conecta.php");
 
-$sexo = 'M';
+$sexo = 'F';
 //consulta via PDO
  $sql = "SELECT cdpessoa, nome, nascimento FROM pessoa where sexo=:sexo";
   try {
@@ -15,13 +15,18 @@ $sexo = 'M';
     $declaracao->bindColumn('nascimento', $nascimento);
     $declaracao->bindColumn('cdpessoa', $cdpessoa);
     $declaracao->bindColumn('nome', $nome);
-
-    while ($registro = $declaracao->fetch(PDO::FETCH_BOUND)) {
-     $dados = "$cdpessoa , $nome , $nascimento <br>";
-     echo($dados);
-      
+    //->rowCount retorna o número de registros
+    //retornados pela consulta
+    if ($declaracao->rowCount() > 0) {
+      while ($registro = $declaracao->fetch(PDO::FETCH_BOUND)) {
+       echo("$cdpessoa , $nome , $nascimento <br>");
+       
+      }
     }
-  }
+    else {
+      echo("nenhum registro localizado");
+    }
+  }//fim try
   catch (PDOException $e) {
     print $e->getMessage();
   }
