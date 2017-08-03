@@ -10,10 +10,9 @@
 		<option value="F">Feminino</option>
 	</select><br>
 	<label for="idcidade">Cidade:</label>
-	<?php
+	<?php          //name    tabela   campo1     campo2
 		geraSelect("cidade","cidade","cdcidade","nmcidade");
 	?>
-
 	<br>
 	<input type="submit" name="acao" value="enviar">
 </form>
