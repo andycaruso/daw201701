@@ -1,6 +1,6 @@
 <?php
 require("funcoes.php");
-require("frm_inclui.php");
+
 $erros = array();
 //testa se $_REQUEST foi criado pelo envio de um form
 if (isset($_REQUEST['acao'])) {
@@ -33,13 +33,15 @@ if (isset($_REQUEST['acao'])) {
 	//testa erros 
 	if (count($erros) > 0){
 		echo ("Houve " . count($erros) . " erro(s).<br>");
-		echo ("Verifique campos obrigatórios:<br>");
+		echo ("Verifique campos obrigatórios:");
 		foreach ($erros as $v) {
-			echo ("$v<br>");
+			echo (" $v, ");
 		}
+		
+		require("frm_inclui.php");
+		//exit é fim de programa
 		exit();
 	}
-
 
 	//testa se $_REQUEST['acao'] é igual a 'enviar' 
 	if ($acao == 'enviar'){
@@ -55,6 +57,7 @@ if (isset($_REQUEST['acao'])) {
 	  }
 	}//fim if($acao ...
 }//fim if isset...
+require("frm_inclui.php");
 
 
 

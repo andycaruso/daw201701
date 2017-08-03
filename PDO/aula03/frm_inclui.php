@@ -1,4 +1,4 @@
-<form method="post">
+<form method="get">
 	<label for="idNome">Nome:</label>
 	<input type="text" name="nome" id="idNome"><br>
 	<label for="idNascimento">Nascimento:</label>
