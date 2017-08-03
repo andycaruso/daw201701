@@ -1,14 +1,12 @@
-<form method="post">
+<form method="get">
 	<label for="idNome">Nome:</label>
 	<input type="text" name="nome" id="idNome" value="<?=$nome?>"><br>
 	<label for="idNascimento">Nascimento:</label>
 	<input type="text" name="nascimento" id="idNascimento" value="<?=$nascimento?>"><br>
 	<label for="idSexo">Sexo:</label>
-	<select name="sexo" id="idSexo">
-		<option value="">--Escolha--</option>
-		<option value="M">Masculino</option>
-		<option value="F">Feminino</option>
-	</select><br>
+	<?php       //name tabela campo1  campo2   valor
+	geraSelect("sexo","sexo","cdsexo","nmsexo",$sexo);
+	?><br>
 	<label for="idcidade">Cidade:</label>
 	<?php          //name    tabela   campo1     campo2    valor
 	geraSelect("cidade","cidade","cdcidade","nmcidade",$cdcidadepessoa);
