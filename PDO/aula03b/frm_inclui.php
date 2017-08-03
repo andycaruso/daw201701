@@ -1,17 +1,17 @@
+<style type="text/css">
+	.erro { 
+		background-color:red;
+		color:white;
+		 }
+</style>
 <form method="get">
-	<label for="idNome">Nome:</label>
-	<input type="text" name="nome" id="idNome" value="<?=$nome?>">
-	<br>
-	<label for="idNascimento">Nascimento:</label>
-	<input type="text" name="nascimento" id="idNascimento" value="<?=$nascimento?>"><br>
-	<label for="idSexo">Sexo:</label>
-	<?php       //name tabela campo1  campo2   valor
-	geraSelect("sexo","sexo","cdsexo","nmsexo",$sexo);
-	?>
-	<br>
-	<label for="idcidade">Cidade:</label>
-	<?php          //name    tabela   campo1     campo2    valor
-	geraSelect("cidade","cidade","cdcidade","nmcidade",$cdcidadepessoa);
+<?php
+	geraInput('Nome','nome',$nome,$erros);
+	geraInput('Nascimento','nascimento',$nascimento,$erros);
+	       //name tabela campo1  campo2   valor
+	geraSelect("sexo","sexo","cdsexo","nmsexo",$sexo,"Sexo");        
+	       //name    tabela   campo1     campo2    valor
+	geraSelect("cidade","cidade","cdcidade","nmcidade",$cdcidadepessoa,"Cidade");
 	?>
 	<br>
 	<input type="submit" name="acao" value="enviar">

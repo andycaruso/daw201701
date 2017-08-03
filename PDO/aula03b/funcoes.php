@@ -1,6 +1,26 @@
 <?php
 require("conecta.php");
 
+///////////////////////////////
+//E1: Label do input
+//E2: name do input
+//E3: value do input
+//E4: vetor de erros (para validação)
+function geraInput($label,$name,$value,$vetor=array()){
+  $id = "id" . $name;
+  echo ("<label for='$id'>$label</label>\n");
+  echo ("<input type='text' id='$id' name='$name' value='$value' ");
+  //busca no vetor de erros o label desta input
+  if(in_array($label, $vetor)){
+    echo ("class='erro'");
+
+  }
+  echo ("><br>\n");
+
+}
+
+
+///////////////////////////////
 //E: data em formato brasileiro (DD/MM/ANO)
 //S: data em formato mySQL
 function converteData($data){
@@ -19,8 +39,9 @@ function converteData($data){
 //E3: campo do banco de dados que representa o cód. (value='')
 //E4: campo do banco de dados que representa a descrição
 //E5: valor atual da variavel do <select> (pré marcado)
+//E6: label
 //S:  nada
-function geraSelect($nome,$tabela,$campo1,$campo2,$valor){
+function geraSelect($nome,$tabela,$campo1,$campo2,$valor,$label){
 	//cria conexão (variável local)
 	require("conecta.php");
 	//monta a query para consultar o banco
@@ -37,7 +58,7 @@ function geraSelect($nome,$tabela,$campo1,$campo2,$valor){
     $id = "id" . $nome;
     //abre o <select
     echo("<select name='$nome' id='$id'>\n");
-    echo("<option value=''>--escolha--</option>\n");
+    echo("<option value=''>--$label--</option>\n");
     	//monta os <option>s do select
 	    while ($registro = $declaracao->fetch(PDO::FETCH_BOUND)) {
          if ($valor != $cp1)
@@ -46,7 +67,7 @@ function geraSelect($nome,$tabela,$campo1,$campo2,$valor){
              echo "<option value='$cp1' selected='selected'> $cp2 </option>\n"; 
 	    }
 	//fecha o <select
-    echo("</select>");
+    echo("</select><br>\n");
   }
   catch (PDOException $e) {
     print $e->getMessage();
