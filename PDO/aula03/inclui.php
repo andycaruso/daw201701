@@ -1,7 +1,7 @@
 <?php
 require("funcoes.php");
 require("frm_inclui.php");
-$erros = 0;
+$erros = array();
 //testa se $_REQUEST foi criado pelo envio de um form
 if (isset($_REQUEST['acao'])) {
 	//guarda em varíaveis do PHP cada valor correspondente 
@@ -9,12 +9,13 @@ if (isset($_REQUEST['acao'])) {
 	$acao = $_REQUEST['acao'];
 	$nome = $_REQUEST['nome'];
 	if (strlen($nome) == 0){
-		$erros++;
+		//array_push cria um novo elemento em um vetor
+		array_push($erros, 'Nome');
 	}
 
 	$nascimento = $_REQUEST['nascimento'];
 	if (strlen($nascimento) == 0){
-		$erros++;
+		array_push($erros, 'Nascimento');
 	}
 
 	//formata a data para o padrao mysql
@@ -22,17 +23,20 @@ if (isset($_REQUEST['acao'])) {
 
 	$sexo = $_REQUEST['sexo'];
 	if (strlen($sexo) == 0){
-		$erros++;
+		array_push($erros, 'Sexo');
 	}
 	$cdcidadepessoa = $_REQUEST['cidade'];
 	if (strlen($cdcidadepessoa) == 0){
-		$erros++;
+		array_push($erros, 'Cidade');
 	}
 	
 	//testa erros 
-	if ($erros != 0){
-		echo ("Houve $erros erro(s).<br>");
-		echo ("Verifique campos obrigatórios");
+	if (count($erros) > 0){
+		echo ("Houve " . count($erros) . " erro(s).<br>");
+		echo ("Verifique campos obrigatórios:<br>");
+		foreach ($erros as $v) {
+			echo ("$v<br>");
+		}
 		exit();
 	}
 
