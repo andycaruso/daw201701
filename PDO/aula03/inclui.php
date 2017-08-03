@@ -18,8 +18,6 @@ if (isset($_REQUEST['acao'])) {
 		array_push($erros, 'Nascimento');
 	}
 
-	//formata a data para o padrao mysql
-	$nascimento = converteData($nascimento);
 
 	$sexo = $_REQUEST['sexo'];
 	if (strlen($sexo) == 0){
@@ -32,19 +30,23 @@ if (isset($_REQUEST['acao'])) {
 	
 	//testa erros 
 	if (count($erros) > 0){
+		require("frm_inclui.php");
 		echo ("Houve " . count($erros) . " erro(s).<br>");
 		echo ("Verifique campos obrigatórios:");
 		foreach ($erros as $v) {
 			echo (" $v, ");
 		}
 		
-		require("frm_inclui.php");
+		
 		//exit é fim de programa
 		exit();
 	}
 
 	//testa se $_REQUEST['acao'] é igual a 'enviar' 
 	if ($acao == 'enviar'){
+		//formata a data para o padrao mysql
+		$nascimento = converteData($nascimento);
+
 		//consulta via PDO
  		$sql = "INSERT INTO `pessoa` (`cdpessoa`, `nome`, `nascimento`, `sexo`, `cdcidadepessoa`) VALUES (NULL, '$nome', '$nascimento', '$sexo', '$cdcidadepessoa');";
 	  try {

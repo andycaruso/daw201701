@@ -1,8 +1,8 @@
 <form method="get">
 	<label for="idNome">Nome:</label>
-	<input type="text" name="nome" id="idNome"><br>
+	<input type="text" name="nome" id="idNome" value="<?=$nome?>"><br>
 	<label for="idNascimento">Nascimento:</label>
-	<input type="text" name="nascimento" id="idNascimento"><br>
+	<input type="text" name="nascimento" id="idNascimento" value="<?=$nascimento?>"><br>
 	<label for="idSexo">Sexo:</label>
 	<select name="sexo" id="idSexo">
 		<option value="">--Escolha--</option>
