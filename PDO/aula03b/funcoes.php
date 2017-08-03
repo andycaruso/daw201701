@@ -1,5 +1,7 @@
 <?php
 require("conecta.php");
+//desabilita warnings 
+error_reporting("E_ALL & ~NOTICE");
 
 ///////////////////////////////
 //E1: Label do input

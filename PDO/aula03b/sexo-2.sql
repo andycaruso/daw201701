@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 03-Ago-2017 às 16:12
+-- Generation Time: 03-Ago-2017 às 16:59
 -- Versão do servidor: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -27,16 +27,17 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `sexo` (
-  `cdsexo` varchar(1) COLLATE utf8_swedish_ci NOT NULL
+  `cdsexo` varchar(1) COLLATE utf8_swedish_ci NOT NULL,
+  `nmsexo` varchar(10) COLLATE utf8_swedish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 
 --
 -- Extraindo dados da tabela `sexo`
 --
 
-INSERT INTO `sexo` (`cdsexo`) VALUES
-('F'),
-('M');
+INSERT INTO `sexo` (`cdsexo`, `nmsexo`) VALUES
+('F', 'Feminino'),
+('M', 'Masculino');
 
 --
 -- Indexes for dumped tables
