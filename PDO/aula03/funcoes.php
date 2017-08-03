@@ -18,8 +18,9 @@ function converteData($data){
 //E2: tabela do banco de dados
 //E3: campo do banco de dados que representa o cód. (value='')
 //E4: campo do banco de dados que representa a descrição
+//E5: valor atual da variavel do <select> (pré marcado)
 //S:  nada
-function geraSelect($nome,$tabela,$campo1,$campo2){
+function geraSelect($nome,$tabela,$campo1,$campo2,$valor){
 	//cria conexão (variável local)
 	require("conecta.php");
 	//monta a query para consultar o banco
@@ -39,7 +40,10 @@ function geraSelect($nome,$tabela,$campo1,$campo2){
     echo("<option value=''>--escolha--</option>\n");
     	//monta os <option>s do select
 	    while ($registro = $declaracao->fetch(PDO::FETCH_BOUND)) {
-	     echo "<option value='$cp1'> $cp2 </option>\n";
+         if ($valor != $cp1)
+	        echo "<option value='$cp1'> $cp2 </option>\n";
+         else
+             echo "<option value='$cp1' selected='selected'> $cp2 </option>\n"; 
 	    }
 	//fecha o <select
     echo("</select>");

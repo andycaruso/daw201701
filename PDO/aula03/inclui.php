@@ -53,6 +53,7 @@ if (isset($_REQUEST['acao'])) {
 	    $declaracao = $link->prepare($sql);
 	    $declaracao->execute();
 	    echo ("Pessoa incluída com sucesso!");
+	    
 	  }
 	  catch (PDOException $e) {
 	    print $e->getMessage() . $sql;

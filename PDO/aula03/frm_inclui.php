@@ -1,4 +1,4 @@
-<form method="get">
+<form method="post">
 	<label for="idNome">Nome:</label>
 	<input type="text" name="nome" id="idNome" value="<?=$nome?>"><br>
 	<label for="idNascimento">Nascimento:</label>
@@ -10,8 +10,8 @@
 		<option value="F">Feminino</option>
 	</select><br>
 	<label for="idcidade">Cidade:</label>
-	<?php          //name    tabela   campo1     campo2
-		geraSelect("cidade","cidade","cdcidade","nmcidade");
+	<?php          //name    tabela   campo1     campo2    valor
+	geraSelect("cidade","cidade","cdcidade","nmcidade",$cdcidadepessoa);
 	?>
 	<br>
 	<input type="submit" name="acao" value="enviar">
