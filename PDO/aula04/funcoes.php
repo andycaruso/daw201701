@@ -101,5 +101,18 @@ function geraSelect($nome,$tabela,$campo1,$campo2,$valor,$label){
 
 }
 
+//////////////////////////////
+//E: data em formato brasileiro (DD/MM/ANO)
+//S: data em formato mySQL
+function converteDataHumano($data){
+    //explode pega $data e separa pelo caractere '/'
+    //guardando cada parte em um elemento do vetor $vetorData
+  $vetorData = explode('-', $data);
+    //monta a data em formato mySQL
+  $dataNova = $vetorData[2] . "/" . $vetorData[1] . "/" . $vetorData[0];
+    //retorna data formatada
+  return($dataNova);
+}
+
 
 ?>

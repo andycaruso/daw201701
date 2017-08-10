@@ -7,10 +7,38 @@ if(isset($_REQUEST['acao'])){
     $cod = $_REQUEST['COD'];
       //rotina de exclusão
       require_once("exclui.php");
-
       break;
+    case 'Salvar':
+          $COD = $_REQUEST['COD'];
+          $nome = $_REQUEST['nome'];
+          $nascimento = converteData($_REQUEST['nascimento']);
+          $sexo = $_REQUEST['sexo'];
+          $cdcidadepessoa = $_REQUEST['cidade'];
+          //rotina de alteração
+          require_once("altera.php");
+    break;
     case 'Alterar':
-      echo ("Clicou em alterar");
+      $COD = $_REQUEST['COD'];
+      $sql = "SELECT cdpessoa, nome, nascimento,sexo,cdcidadepessoa FROM pessoa where cdpessoa=$COD";
+      try {
+        $declaracao = $link->prepare($sql);
+        $declaracao->execute();
+        /* liga uma coluna do banco a uma variavel PHP */
+        $declaracao->bindColumn('cdpessoa', $cdpessoa);
+        $declaracao->bindColumn('nome', $nome);
+        $declaracao->bindColumn('nascimento', $nascimento);
+        $declaracao->bindColumn('sexo', $sexo);
+        $declaracao->bindColumn('cdcidadepessoa', $cdcidadepessoa);
+        //->rowCount retorna o número de registros
+        //retornados pela consulta
+        if ($declaracao->rowCount() > 0) {
+          $registro = $declaracao->fetch(PDO::FETCH_BOUND); 
+        }
+       }//fim try
+      catch (PDOException $e) {
+        print $e->getMessage();
+      }
+      require_once("frm_altera.php");
       break;
     case 'Excluir':
       $COD = $_REQUEST['COD'];
@@ -66,7 +94,7 @@ if(isset($_REQUEST['acao'])){
          echo ($nome);
        geraTag("td",1);
        geraTag("td",0);
-         echo ($nascimento);
+         echo (converteDataHumano($nascimento));
        geraTag("td",1);
        geraTag("td",1);
        geraTag("td",0);

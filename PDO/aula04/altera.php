@@ -1,24 +1,21 @@
 <?php
-
-require("conecta.php");
-
-$cdpessoa = '33';
-$nome = 'Mário';
+$cdpessoa = $COD;
 
 //consulta via PDO
- $sql = "UPDATE pessoa set nome=:nome where cdpessoa=:cdpessoa";
+ $sql = "UPDATE pessoa set nome=:nome,nascimento=:nascimento,sexo=:sexo,cdcidadepessoa=:cdcidadepessoa where cdpessoa=:cdpessoa";
   try {
     $declaracao = $link->prepare($sql);
 
     //conecta so parâmetro PDO às variáveois do PHP 
     $declaracao->bindParam(':nome', $nome);
+    $declaracao->bindParam(':nascimento', $nascimento);
     $declaracao->bindParam(':cdpessoa', $cdpessoa);
+    $declaracao->bindParam(':sexo', $sexo);
+    $declaracao->bindParam(':cdcidadepessoa', $cdcidadepessoa);
     $declaracao->execute();
-   if ($declaracao->rowCount() > 0)
+   
      echo ("Pessoa alterada com sucesso!");
-    else
-      echo("Código não existe.");
-
+   
   }
   catch (PDOException $e) {
     print $e->getMessage();
