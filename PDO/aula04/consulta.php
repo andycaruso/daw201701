@@ -1,12 +1,12 @@
 <?php
-require("funcoes.php");
+require_once("funcoes.php");
 
 if(isset($_REQUEST['acao'])){
   switch ($_REQUEST['acao']) {
     case 'Sim':
     $cod = $_REQUEST['COD'];
-      //rotina de exclusão 
-      require("exclui.php");
+      //rotina de exclusão
+      require_once("exclui.php");
 
       break;
     case 'Alterar':
