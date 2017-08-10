@@ -7,7 +7,6 @@
 <form method="get">
 <?php
 	geraInput('Nome','nome',$nome,$erros);
-	$nascimento = converteDataHumano($nascimento);
 	geraInput('Nascimento','nascimento',$nascimento,$erros);
 	       //name tabela campo1  campo2   valor
 	geraSelect("sexo","sexo","cdsexo","nmsexo",$sexo,"Sexo");        

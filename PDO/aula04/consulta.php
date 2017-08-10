@@ -34,6 +34,7 @@ if(isset($_REQUEST['acao'])){
       catch (PDOException $e) {
         print $e->getMessage();
       }
+      $nascimento = converteDataHumano($nascimento);
       require_once("frm_altera.php");
       break;
     case 'Excluir':
