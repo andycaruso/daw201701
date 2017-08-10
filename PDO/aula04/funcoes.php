@@ -4,6 +4,29 @@ require("conecta.php");
 error_reporting("E_ALL & ~NOTICE");
 
 ///////////////////////////////
+//E1:nome da tag 
+//E2:0 abre tag, 1 fecha tag
+//E3:vetor com atributos 
+function geraTag($tag,$fecha,$vetor){
+  if($fecha == 1)
+    echo("</$tag>\n");
+  else {
+    echo ("<$tag ");
+    //variavel auxiliar para concatenar os atributos
+    $aux = "";
+    //testa de $vetor é um array
+    if(is_array($vetor)){
+      //gera os atributos da tag
+      foreach ($vetor as $atributo => $valor) {
+        $aux .=  "$atributo='$valor' ";
+      }
+    }
+    echo("$aux>\n");
+  }
+
+}
+
+///////////////////////////////
 //E1: Label do input
 //E2: name do input
 //E3: value do input
