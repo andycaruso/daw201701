@@ -7,25 +7,15 @@ if (isset($_REQUEST['acao'])) {
 	//guarda em varíaveis do PHP cada valor correspondente 
 	//do vetor associativo $_REQUEST[]
 	$acao = $_REQUEST['acao'];
-	$nome = $_REQUEST['nome'];
-	if (strlen($nome) == 0){
+	$nmcidade = $_REQUEST['nmcidade'];
+	if (strlen($nmcidade) == 0){
 		//array_push cria um novo elemento em um vetor
 		array_push($erros, 'Nome');
 	}
 
-	$nascimento = $_REQUEST['nascimento'];
-	if (strlen($nascimento) == 0){
-		array_push($erros, 'Nascimento');
-	}
-
-
-	$sexo = $_REQUEST['sexo'];
-	if (strlen($sexo) == 0){
-		array_push($erros, 'Sexo');
-	}
-	$cdcidadepessoa = $_REQUEST['cidade'];
-	if (strlen($cdcidadepessoa) == 0){
-		array_push($erros, 'Cidade');
+	$ufcidade = $_REQUEST['ufcidade'];
+	if (strlen($ufcidade) == 0){
+		array_push($erros, 'Estado');
 	}
 	
 	//testa erros 
@@ -48,16 +38,14 @@ if (isset($_REQUEST['acao'])) {
 		$nascimento = converteData($nascimento);
 
 		//consulta via PDO
- 		$sql = "INSERT INTO `pessoa` (`cdpessoa`, `nome`, `nascimento`, `sexo`, `cdcidadepessoa`) VALUES (NULL, '$nome', '$nascimento', '$sexo', '$cdcidadepessoa');";
+ 		$sql = "INSERT INTO `cidade` (`cdcidade`, `nmcidade`,`ufcidade`) VALUES (NULL, '$nmcidade','$ufcidade');";
 	  try {
 	    $declaracao = $link->prepare($sql);
 	    $declaracao->execute();
-	    echo ("Pessoa incluída com sucesso!");
+	    echo ("Cidade incluída com sucesso!");
 	    //limpar as variáveis depois do cadastro
-	    $nome = '';
-	    $sexo = '';
-	    $nascimento = '';
-	    $cdcidadepessoa = '';
+	    $nmcidade = '';
+	    $ufcidade = '';
 	  }
 	  catch (PDOException $e) {
 	    print $e->getMessage() . $sql;
