@@ -1,6 +1,54 @@
 <?php
-
 require("funcoes.php");
+
+if(isset($_REQUEST['acao'])){
+  switch ($_REQUEST['acao']) {
+    case 'Sim':
+      $cod = $_REQUEST['COD'];
+      //consulta via PDO
+       $sql = "DELETE From `pessoa` where `cdpessoa`= :cod";
+        try {
+          $declaracao = $link->prepare($sql);
+          $declaracao->bindParam(':cod', $cod);
+          $declaracao->execute();
+          //rowCount é um método que retorna o número de linhas
+          //afetadas pela última chamada ao método execute
+          if ($declaracao->rowCount() > 0)
+           echo ("Pessoa excluída com sucesso!");
+          else
+            echo("Código não existe.");
+        }
+        catch (PDOException $e) {
+          print $e->getMessage();
+        }
+
+      break;
+    case 'Alterar':
+      echo ("Clicou em alterar");
+      break;
+    case 'Excluir':
+      $COD = $_REQUEST['COD'];
+      echo ("Tem certeza que deseja excluir a pessoa de código = $COD \n");
+       geraTag("form",0,array("method"=>"GET")); 
+       geraTag("input",0,array("name"=>"acao",
+                               "type"=>"submit",
+                               "value"=>"Sim"));
+       geraTag("input",0,array("type"=>"submit",
+                               "value"=>"Não"));
+       geraTag("input",0,array("name"=>"COD",
+                               "type"=>"hidden",
+                               "value"=>"$COD"));
+        geraTag("form",1); 
+        break;
+
+    default:
+      # code...
+      break;
+  }
+
+
+}
+
 
 //consulta via PDO
  $sql = "SELECT cdpessoa, nome, nascimento FROM pessoa order by nome";

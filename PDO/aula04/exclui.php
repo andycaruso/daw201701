@@ -1,8 +1,8 @@
 <?php
-require("conecta.php");
-
+require("funcoes.php");
+echo ("xxxxx");
 //dados a serem incluidos
-$cod = 37;
+$cod = $_REQUEST($COD);
 
 //consulta via PDO
  $sql = "DELETE From `pessoa` where `cdpessoa`= :cod";
