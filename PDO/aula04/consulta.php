@@ -1,5 +1,6 @@
 <?php
 require_once("funcoes.php");
+$erros = array();
 
 if(isset($_REQUEST['acao'])){
   switch ($_REQUEST['acao']) {
@@ -9,11 +10,6 @@ if(isset($_REQUEST['acao'])){
       require_once("exclui.php");
       break;
     case 'Salvar':
-          $COD = $_REQUEST['COD'];
-          $nome = $_REQUEST['nome'];
-          $nascimento = converteData($_REQUEST['nascimento']);
-          $sexo = $_REQUEST['sexo'];
-          $cdcidadepessoa = $_REQUEST['cidade'];
           //rotina de alteração
           require_once("altera.php");
     break;
