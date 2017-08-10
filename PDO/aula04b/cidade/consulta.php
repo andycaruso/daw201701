@@ -1,5 +1,5 @@
 <?php
-require_once("funcoes.php");
+require_once("../funcoes.php");
 $erros = array();
 
 if(isset($_REQUEST['acao'])){

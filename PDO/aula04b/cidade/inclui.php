@@ -1,5 +1,5 @@
 <?php
-require("funcoes.php");
+require("../funcoes.php");
 
 $erros = array();
 //testa se $_REQUEST foi criado pelo envio de um form
