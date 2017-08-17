@@ -3,42 +3,12 @@ require("conecta.php");
 //desabilita warnings 
 //error_reporting("E_ALL & ~NOTICE");
 
-//////////////////////////////
-//E1: Query SQL
-//E2: vetor com os campos para o bindParam
-//E3: vetor com o(s) campos para o where
-//E4: vetor com os campo(s) para o order by
-//E5: objeto de resultado passado por referência
-//S: objeto de erro do pdo
-function consulta($sql,$vCampos,$vWhere,$vOrder,&$declaracao){
-  require_once("conecta.php");
-  try {
-    
-    $declaracao = $link->prepare($sql);
-    if(is_array($vCampos)){
-        foreach ($vCampos as $k => $v) {
-          $k = ":" . $k;
-          $declaracao->bindParam("$k",$v);
-        }
-    }
-    $declaracao->execute();
-  }
-  catch (PDOException $e) {
-    return($e);
-  }
-
-}
-
-
-
-
-
 
 ///////////////////////////////
 //E1:nome da tag 
 //E2:0 abre tag, 1 fecha tag
-//E3:vetor com atributos 
-function geraTag($tag,$fecha,$vetor){
+//E3:vetor com atributos (parametro opcional)
+function geraTag($tag,$fecha,$vetor=array()){
   if($fecha == 1)
     echo("</$tag>\n");
   else {
