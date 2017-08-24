@@ -10,25 +10,18 @@ if (isset($_REQUEST['acao'])) {
 	$cdpessoa = $_REQUEST['cdpessoa'];
 	$cdcurso = $_REQUEST['cdcurso'];
 	$anosemestre = $_REQUEST['anosemestre'];
-	
-	if (strlen($nome) == 0){
+
+	if (strlen($cdpessoa) == 0){
 		//array_push cria um novo elemento em um vetor
-		array_push($erros, 'Nome');
+		array_push($erros, 'Código da pessoa');
 	}
 
-	$nascimento = $_REQUEST['nascimento'];
-	if (strlen($nascimento) == 0){
-		array_push($erros, 'Nascimento');
+	if (strlen($cdcurso) == 0){
+		array_push($erros, 'Código do curso');
 	}
 
-
-	$sexo = $_REQUEST['sexo'];
-	if (strlen($sexo) == 0){
-		array_push($erros, 'Sexo');
-	}
-	$cdcidadepessoa = $_REQUEST['cidade'];
-	if (strlen($cdcidadepessoa) == 0){
-		array_push($erros, 'Cidade');
+	if (strlen($anosemestre) == 0){
+		array_push($erros, 'Ano / Semestre');
 	}
 	
 	//testa erros 
@@ -47,20 +40,20 @@ if (isset($_REQUEST['acao'])) {
 
 	//testa se $_REQUEST['acao'] é igual a 'enviar' 
 	if ($acao == 'enviar'){
-		//formata a data para o padrao mysql
-		$nascimento = converteData($nascimento);
+	$situacao = 'cursando';
+	//montagem do cdmatricula
+	$cdmatricula = $anosemestre . $cdcurso . $cdpessoa;
 
-		//consulta via PDO
- 		$sql = "INSERT INTO `pessoa` (`cdpessoa`, `nome`, `nascimento`, `sexo`, `cdcidadepessoa`) VALUES (NULL, '$nome', '$nascimento', '$sexo', '$cdcidadepessoa');";
+	//consulta via PDO
+ 	$sql = "INSERT INTO `matricula` (`cdmatricula`, `cdpessoa`, `cdcurso`, `anosemestre`, `situacao`) VALUES ($cdmatricula, '$cdpessoa', '$cdcurso', '$anosemestre', '$situacao');";
 	  try {
 	    $declaracao = $link->prepare($sql);
 	    $declaracao->execute();
-	    echo ("Pessoa incluída com sucesso!");
+	    echo ("Matrícula incluída com sucesso!");
 	    //limpar as variáveis depois do cadastro
-	    $nome = '';
-	    $sexo = '';
-	    $nascimento = '';
-	    $cdcidadepessoa = '';
+	    $cdpessoa = '';
+	    $cdcurso = '';
+	    $anosemestre = '';
 	  }
 	  catch (PDOException $e) {
 	    print $e->getMessage() . $sql;
