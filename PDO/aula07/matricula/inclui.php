@@ -7,7 +7,10 @@ if (isset($_REQUEST['acao'])) {
 	//guarda em varíaveis do PHP cada valor correspondente 
 	//do vetor associativo $_REQUEST[]
 	$acao = $_REQUEST['acao'];
-	$nome = $_REQUEST['nome'];
+	$cdpessoa = $_REQUEST['cdpessoa'];
+	$cdcurso = $_REQUEST['cdcurso'];
+	$anosemestre = $_REQUEST['anosemestre'];
+	
 	if (strlen($nome) == 0){
 		//array_push cria um novo elemento em um vetor
 		array_push($erros, 'Nome');

@@ -117,4 +117,26 @@ function converteDataHumano($data){
 }
 
 
+///////////////////////////
+//E1: nome da caxa select
+//E2: ano inicial
+//E3: ano final
+//E4: label
+//S: nada
+function geraAnoSemetre($name,$anoI,$anoF,$label){
+  $id = "id" . $name;
+  echo ("<label for='$id'>$label</label>\n");
+  $s = 0;
+
+  echo ("<select name='$anosemestre' id='$id'>");
+   echo("<option value=''>--$label--</option>\n");
+  for ($i=$anoI; $i<=$anoF; $i++){
+    for ($s=1;$s<=2;$s++){
+        $texto = "$i / $s"; 
+        $valor = "$i$s";
+        echo "<option value='$valor'> $texto </option>\n";
+    }
+  }
+  echo ("</select>");
+}
 ?>
