@@ -128,7 +128,7 @@ function geraAnoSemetre($name,$anoI,$anoF,$label){
   echo ("<label for='$id'>$label</label>\n");
   $s = 0;
 
-  echo ("<select name='$anosemestre' id='$id'>");
+  echo ("<select name='$name' id='$id'>");
    echo("<option value=''>--$label--</option>\n");
   for ($i=$anoI; $i<=$anoF; $i++){
     for ($s=1;$s<=2;$s++){

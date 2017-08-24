@@ -10,7 +10,7 @@
 geraSelect("cdpessoa","pessoa","cdpessoa","nome",$cdpessoa,"Pessoa:");    
 
 geraSelect("cdcurso","curso","cdcurso","nmcurso",$cdcurso,"Curso:");    
- geraAnoSemetre("anosemestre",2015,2017,"Ano/Semestre:"); 
+geraAnoSemetre("anosemestre",2017,2017,"Ano/Semestre:"); 
 	?>
 
 	<br>
