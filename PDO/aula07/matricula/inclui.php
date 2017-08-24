@@ -40,7 +40,7 @@ if (isset($_REQUEST['acao'])) {
 
 	//testa se $_REQUEST['acao'] é igual a 'enviar' 
 	if ($acao == 'enviar'){
-	$situacao = 'cursando';
+	$situacao = 3; //cursando
 	//montagem do cdmatricula
 	$cdmatricula = $anosemestre . $cdcurso . $cdpessoa;
 

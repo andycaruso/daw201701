@@ -12,8 +12,8 @@
 </style>
 <form method="get">
 <?php
-	      //name, tabela, campo1,    campo2,    valor,label  
-geraAnoSemetre("anosemestre",2017,2017,"Ano/Semestre:",$anosemestre); 
+	      //name, tabela, campo1,    campo2,    valor,label
+geraSelect("cdsituacao","situacao","cdsituacao","nmsituacao",$cdsituacao,"Situação:");  
 	?>
 
 	<br>

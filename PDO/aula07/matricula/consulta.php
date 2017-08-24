@@ -20,8 +20,7 @@ if(isset($_REQUEST['acao'])){
         $declaracao = $link->prepare($sql);
         $declaracao->execute();
         /* liga uma coluna do banco a uma variavel PHP */
-        $declaracao->bindColumn('cdmatricula', $cdmatricula);
-        $declaracao->bindColumn('situacao', $situacao);
+        $declaracao->bindColumn('cdsituacao', $cdsituacao);
         //->rowCount retorna o número de registros
         //retornados pela consulta
         if ($declaracao->rowCount() > 0) {
