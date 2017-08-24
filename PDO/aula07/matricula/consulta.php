@@ -15,12 +15,12 @@ if(isset($_REQUEST['acao'])){
     break;
     case 'Alterar':
       $COD = $_REQUEST['COD'];
-      $sql = "SELECT * FROM matricula where cdmatricula=$COD";
+      $sql = "SELECT situacao FROM matricula where cdmatricula=$COD";
       try {
         $declaracao = $link->prepare($sql);
         $declaracao->execute();
         /* liga uma coluna do banco a uma variavel PHP */
-        $declaracao->bindColumn('cdsituacao', $cdsituacao);
+        $declaracao->bindColumn('situacao', $cdsituacao);
         //->rowCount retorna o número de registros
         //retornados pela consulta
         if ($declaracao->rowCount() > 0) {
@@ -58,7 +58,7 @@ if(isset($_REQUEST['acao'])){
 
 
 //consulta via PDO
-    $sql = "SELECT cdmatricula,nome,situacao,matricula.cdcurso,nmcurso from pessoa JOIN matricula ON matricula.cdpessoa = pessoa.cdpessoa JOIN curso ON matricula.cdcurso = curso.cdcurso";
+    $sql = "SELECT cdmatricula,nome,nmsituacao,matricula.cdcurso,nmcurso from pessoa JOIN matricula ON matricula.cdpessoa = pessoa.cdpessoa JOIN curso ON matricula.cdcurso = curso.cdcurso JOIN situacao ON situacao.cdsituacao = matricula.situacao";
     $declaracao = $link->prepare($sql);
     $declaracao->execute();
 
@@ -67,7 +67,7 @@ if(isset($_REQUEST['acao'])){
     $declaracao->bindColumn('cdcurso', $cdcurso);
     $declaracao->bindColumn('nmcurso', $nmcurso);
     $declaracao->bindColumn('cdmatricula', $cdmatricula);
-     $declaracao->bindColumn('situacao', $situacao);
+     $declaracao->bindColumn('nmsituacao', $nmsituacao);
 
     //<table border='1'>
     geraTag("table",0,array("border"=>"1"));
@@ -106,7 +106,7 @@ if(isset($_REQUEST['acao'])){
          echo ($nmcurso);
        geraTag("td",1);
        geraTag("td",0);
-         echo ($situacao);
+         echo ($nmsituacao);
        geraTag("td",1);
        geraTag("td",1);
        geraTag("td",0);
