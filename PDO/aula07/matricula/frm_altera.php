@@ -13,9 +13,13 @@
 <form method="get">
 <?php
 	      //name, tabela, campo1,    campo2,    valor,label
-geraSelect("cdsituacao","situacao","cdsituacao","nmsituacao",$cdsituacao,"Situação:");  
+geraSelect("situacao","situacao","cdsituacao","nmsituacao",$situacao,"Situação:");  
+//campo oculto com o código da matricula
+geraTag("input",0,array("name"=>"COD",
+                               "type"=>"hidden",
+                               "value"=>"$COD"));
 	?>
 
 	<br>
-	<input type="submit" name="acao" value="enviar">
+	<input type="submit" name="acao" value="Salvar">
 </form>
