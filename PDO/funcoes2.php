@@ -1,4 +1,5 @@
 <?php
+
 function conectaPDO(){
   try{
     $aux = 'mysql:host=localhost;dbname=pw1;charset=utf8mb4';
