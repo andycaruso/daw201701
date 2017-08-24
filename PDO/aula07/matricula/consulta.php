@@ -58,7 +58,7 @@ if(isset($_REQUEST['acao'])){
 
 
 //consulta via PDO
-    $sql = "SELECT cdmatricula,nome,nmsituacao,matricula.cdcurso,nmcurso from pessoa JOIN matricula ON matricula.cdpessoa = pessoa.cdpessoa JOIN curso ON matricula.cdcurso = curso.cdcurso JOIN situacao ON situacao.cdsituacao = matricula.situacao";
+    $sql = "SELECT cdmatricula,nome,nmsituacao,matricula.cdcurso,nmcurso from pessoa JOIN matricula ON matricula.cdpessoa = pessoa.cdpessoa JOIN curso ON matricula.cdcurso = curso.cdcurso JOIN situacao ON situacao.cdsituacao = matricula.situacao"; 
     $declaracao = $link->prepare($sql);
     $declaracao->execute();
 

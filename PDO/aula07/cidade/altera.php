@@ -1,26 +1,16 @@
 <?php
 $COD = $_REQUEST['COD'];
-$nome = $_REQUEST['nome'];
-$nascimento = $_REQUEST['nascimento'];
-$sexo = $_REQUEST['sexo'];
-$cdcidadepessoa = $_REQUEST['cidade'];
-$cdpessoa = $COD;
+$nmcidade = $_REQUEST['nmcidade'];
+$ufcidade = $_REQUEST['estado'];
+$cdcidade = $COD;
 
-if (strlen($nome) == 0){
+if (strlen($nmcidade) == 0){
     //array_push cria um novo elemento em um vetor
-    array_push($erros, 'Nome');
+    array_push($erros, 'Nome da cidade');
   }
 
-  if (strlen($nascimento) == 0){
-    array_push($erros, 'Nascimento');
-  }
-
-  if (strlen($sexo) == 0){
-    array_push($erros, 'Sexo');
-  }
- 
-  if (strlen($cdcidadepessoa) == 0){
-    array_push($erros, 'Cidade');
+  if (strlen($ufcidade) == 0){
+    array_push($erros, 'Estado');
   }
   
   //testa erros 
@@ -35,20 +25,16 @@ if (strlen($nome) == 0){
   else { //faz alteração
 
 //consulta via PDO
- $sql = "UPDATE pessoa set nome=:nome,nascimento=:nascimento,sexo=:sexo,cdcidadepessoa=:cdcidadepessoa where cdpessoa=:cdpessoa";
+ $sql = "UPDATE cidade set nmcidade=:nmcidade,ufcidade=:ufcidade where cdcidade=:cdcidade";
   try {
     $declaracao = $link->prepare($sql);
 
     //conecta so parâmetro PDO às variáveois do PHP 
-    $declaracao->bindParam(':nome', $nome);
-    $nascimento =  converteData($nascimento);
-    $declaracao->bindParam(':nascimento', $nascimento);
-    $declaracao->bindParam(':cdpessoa', $cdpessoa);
-    $declaracao->bindParam(':sexo', $sexo);
-    $declaracao->bindParam(':cdcidadepessoa', $cdcidadepessoa);
+    $declaracao->bindParam(':nmcidade', $nmcidade);
+    $declaracao->bindParam(':ufcidade', $ufcidade);
+    $declaracao->bindParam(':cdcidade', $cdcidade);
     $declaracao->execute();
-   
-     echo ("Pessoa alterada com sucesso!");
+    echo ("Cidade alterada com sucesso!");
    
   }
   catch (PDOException $e) {

@@ -15,16 +15,14 @@ if(isset($_REQUEST['acao'])){
     break;
     case 'Alterar':
       $COD = $_REQUEST['COD'];
-      $sql = "SELECT cdpessoa, nome, nascimento,sexo,cdcidadepessoa FROM pessoa where cdpessoa=$COD";
+      $sql = "SELECT nmcidade, cdcidade, ufcidade FROM cidade where cdcidade=$COD";
       try {
         $declaracao = $link->prepare($sql);
         $declaracao->execute();
         /* liga uma coluna do banco a uma variavel PHP */
-        $declaracao->bindColumn('cdpessoa', $cdpessoa);
-        $declaracao->bindColumn('nome', $nome);
-        $declaracao->bindColumn('nascimento', $nascimento);
-        $declaracao->bindColumn('sexo', $sexo);
-        $declaracao->bindColumn('cdcidadepessoa', $cdcidadepessoa);
+        $declaracao->bindColumn('nmcidade', $nmcidade);
+        $declaracao->bindColumn('cdcidade', $cdcidade);
+        $declaracao->bindColumn('ufcidade', $ufcidade);
         //->rowCount retorna o número de registros
         //retornados pela consulta
         if ($declaracao->rowCount() > 0) {
@@ -34,12 +32,11 @@ if(isset($_REQUEST['acao'])){
       catch (PDOException $e) {
         print $e->getMessage();
       }
-      $nascimento = converteDataHumano($nascimento);
       require_once("frm_altera.php");
       break;
     case 'Excluir':
       $COD = $_REQUEST['COD'];
-      echo ("Tem certeza que deseja excluir a pessoa de código = $COD \n");
+      echo ("Tem certeza que deseja excluir a cidade de código = $COD \n");
        geraTag("form",0,array("method"=>"GET")); 
        geraTag("input",0,array("name"=>"acao",
                                "type"=>"submit",
@@ -62,15 +59,15 @@ if(isset($_REQUEST['acao'])){
 
 
 //consulta via PDO
- $sql = "SELECT cdpessoa, nome, nascimento FROM pessoa order by nome";
+ $sql = "SELECT nmcidade, cdcidade, ufcidade FROM cidade order by nmcidade";
   try {
     $declaracao = $link->prepare($sql);
     $declaracao->execute();
 
     /* liga uma coluna do banco a uma variavel PHP */
-    $declaracao->bindColumn('nascimento', $nascimento);
-    $declaracao->bindColumn('cdpessoa', $cdpessoa);
-    $declaracao->bindColumn('nome', $nome);
+    $declaracao->bindColumn('nmcidade', $nmcidade);
+    $declaracao->bindColumn('cdcidade', $cdcidade);
+    $declaracao->bindColumn('ufcidade', $ufcidade);
     //->rowCount retorna o número de registros
     //retornados pela consulta
    
@@ -83,15 +80,15 @@ if(isset($_REQUEST['acao'])){
        geraTag("td",0);
          geraTag("input",0,array("name"=>"COD",
                                  "type"=>"text",
-                                 "value"=>"$cdpessoa",
+                                 "value"=>"$cdcidade",
                                  "size"=>"2",
                                  "readonly"=>"readonly"));
        geraTag("td",1);
        geraTag("td",0);
-         echo ($nome);
+         echo ($nmcidade);
        geraTag("td",1);
        geraTag("td",0);
-         echo (converteDataHumano($nascimento));
+          echo ($ufcidade);
        geraTag("td",1);
        geraTag("td",1);
        geraTag("td",0);
