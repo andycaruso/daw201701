@@ -1,6 +1,5 @@
 <?php
 require_once("../funcoes.php");
-require_once("../funcoes2.php");
 $erros = array();
 
 if(isset($_REQUEST['acao'])){
@@ -63,12 +62,13 @@ if(isset($_REQUEST['acao'])){
 
 
 //consulta via PDO
-    
-    $sql = "SELECT cdpessoa, nome, nascimento FROM pessoa where :sexo =$SEXO";
-    $declaracao = retornaVetorConsulta($sql,array(":sexo",'M'));
+    $sql = "SELECT cdmatricula, pessoa.cdpessoa as COD,nome,matricula.cdcurso,nmcurso,anosemestre from pessoa JOIN matricula ON matricula.cdpessoa = pessoa.cdpessoa JOIN curso ON matricula.cdcurso = curso.cdcurso";
+    $declaracao = $link->prepare($sql);
+    $declaracao->execute();
+
     /* liga uma coluna do banco a uma variavel PHP */
-    $declaracao->bindColumn('nascimento', $nascimento);
-    $declaracao->bindColumn('cdpessoa', $cdpessoa);
+    $declaracao->bindColumn('COD', $cdpessoa);
+    $declaracao->bindColumn('cdcurso', $cdcurso);
     $declaracao->bindColumn('nome', $nome); 
 
    
@@ -87,9 +87,6 @@ if(isset($_REQUEST['acao'])){
        geraTag("td",1);
        geraTag("td",0);
          echo ($nome);
-       geraTag("td",1);
-       geraTag("td",0);
-         echo (converteDataHumano($nascimento));
        geraTag("td",1);
        geraTag("td",1);
        geraTag("td",0);
