@@ -15,16 +15,13 @@ if(isset($_REQUEST['acao'])){
     break;
     case 'Alterar':
       $COD = $_REQUEST['COD'];
-      $sql = "SELECT cdpessoa, nome, nascimento,sexo,cdcidadepessoa FROM pessoa where cdpessoa=$COD";
+      $sql = "SELECT * FROM matricula where cdmatricula=$COD";
       try {
         $declaracao = $link->prepare($sql);
         $declaracao->execute();
         /* liga uma coluna do banco a uma variavel PHP */
-        $declaracao->bindColumn('cdpessoa', $cdpessoa);
-        $declaracao->bindColumn('nome', $nome);
-        $declaracao->bindColumn('nascimento', $nascimento);
-        $declaracao->bindColumn('sexo', $sexo);
-        $declaracao->bindColumn('cdcidadepessoa', $cdcidadepessoa);
+        $declaracao->bindColumn('cdmatricula', $cdmatricula);
+        $declaracao->bindColumn('situacao', $situacao);
         //->rowCount retorna o número de registros
         //retornados pela consulta
         if ($declaracao->rowCount() > 0) {
@@ -39,7 +36,7 @@ if(isset($_REQUEST['acao'])){
       break;
     case 'Excluir':
       $COD = $_REQUEST['COD'];
-      echo ("Tem certeza que deseja excluir a pessoa de código = $COD \n");
+      echo ("Tem certeza que deseja excluir a Matrícula de código = $COD \n");
        geraTag("form",0,array("method"=>"GET")); 
        geraTag("input",0,array("name"=>"acao",
                                "type"=>"submit",
@@ -62,7 +59,7 @@ if(isset($_REQUEST['acao'])){
 
 
 //consulta via PDO
-    $sql = "SELECT cdmatricula,nome,matricula.cdcurso,nmcurso from pessoa JOIN matricula ON matricula.cdpessoa = pessoa.cdpessoa JOIN curso ON matricula.cdcurso = curso.cdcurso";
+    $sql = "SELECT cdmatricula,nome,situacao,matricula.cdcurso,nmcurso from pessoa JOIN matricula ON matricula.cdpessoa = pessoa.cdpessoa JOIN curso ON matricula.cdcurso = curso.cdcurso";
     $declaracao = $link->prepare($sql);
     $declaracao->execute();
 
@@ -71,6 +68,7 @@ if(isset($_REQUEST['acao'])){
     $declaracao->bindColumn('cdcurso', $cdcurso);
     $declaracao->bindColumn('nmcurso', $nmcurso);
     $declaracao->bindColumn('cdmatricula', $cdmatricula);
+     $declaracao->bindColumn('situacao', $situacao);
 
     //<table border='1'>
     geraTag("table",0,array("border"=>"1"));
@@ -85,6 +83,9 @@ if(isset($_REQUEST['acao'])){
     echo ("Curso");
     geraTag("td",1);
     geraTag("td",0);
+    echo ("Situação");
+    geraTag("td",1);
+       geraTag("td",0);
     echo ("Operações");
     geraTag("td",1);
     geraTag("tr",1);
@@ -104,6 +105,9 @@ if(isset($_REQUEST['acao'])){
        geraTag("td",1);
        geraTag("td",0);
          echo ($nmcurso);
+       geraTag("td",1);
+       geraTag("td",0);
+         echo ($situacao);
        geraTag("td",1);
        geraTag("td",1);
        geraTag("td",0);

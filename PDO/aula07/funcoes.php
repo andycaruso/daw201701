@@ -122,19 +122,24 @@ function converteDataHumano($data){
 //E2: ano inicial
 //E3: ano final
 //E4: label
+//E5: valor atual (opcional)
 //S: nada
-function geraAnoSemetre($name,$anoI,$anoF,$label){
+function geraAnoSemetre($name,$anoI,$anoF,$label,$valorAtual=''){
   $id = "id" . $name;
   echo ("<label for='$id'>$label</label>\n");
   $s = 0;
-
+  $selected = "";
   echo ("<select name='$name' id='$id'>");
    echo("<option value=''>--$label--</option>\n");
   for ($i=$anoI; $i<=$anoF; $i++){
     for ($s=1;$s<=2;$s++){
         $texto = "$i / $s"; 
         $valor = "$i$s";
-        echo "<option value='$valor'> $texto </option>\n";
+        if($valorAtual == $valor) {
+          $selected = "selected='selected'";
+        }
+        echo "<option value='$valor'> $texto </option $selected>\n";
+        $selected = "";
     }
   }
   echo ("</select>");
