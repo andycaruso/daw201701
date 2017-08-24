@@ -62,13 +62,15 @@ if(isset($_REQUEST['acao'])){
 
 
 //consulta via PDO
-    $sql = "SELECT cdmatricula, pessoa.cdpessoa as COD,nome,matricula.cdcurso,nmcurso,anosemestre from pessoa JOIN matricula ON matricula.cdpessoa = pessoa.cdpessoa JOIN curso ON matricula.cdcurso = curso.cdcurso";
+    $sql = "SELECT cdmatricula, pessoa.cdpessoa as COD,nome,matricula.cdcurso,nmcurso from pessoa JOIN matricula ON matricula.cdpessoa = pessoa.cdpessoa JOIN curso ON matricula.cdcurso = curso.cdcurso";
     $declaracao = $link->prepare($sql);
     $declaracao->execute();
 
     /* liga uma coluna do banco a uma variavel PHP */
     $declaracao->bindColumn('COD', $cdpessoa);
     $declaracao->bindColumn('cdcurso', $cdcurso);
+    $declaracao->bindColumn('nmcurso', $nmcurso);
+    $declaracao->bindColumn('cdmatricula', $cdmatricula);
     $declaracao->bindColumn('nome', $nome); 
 
    
@@ -81,12 +83,15 @@ if(isset($_REQUEST['acao'])){
        geraTag("td",0);
          geraTag("input",0,array("name"=>"COD",
                                  "type"=>"text",
-                                 "value"=>"$cdpessoa",
-                                 "size"=>"2",
+                                 "value"=>"$cdmatricula",
+                                 "size"=>"11",
                                  "readonly"=>"readonly"));
        geraTag("td",1);
        geraTag("td",0);
          echo ($nome);
+       geraTag("td",1);
+       geraTag("td",0);
+         echo ($nmcurso);
        geraTag("td",1);
        geraTag("td",1);
        geraTag("td",0);

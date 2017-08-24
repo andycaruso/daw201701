@@ -1,6 +1,6 @@
 <?php
 require_once("../funcoes.php");
-require_once("../funcoes2.php");
+
 $erros = array();
 
 if(isset($_REQUEST['acao'])){
@@ -64,8 +64,10 @@ if(isset($_REQUEST['acao'])){
 
 //consulta via PDO
     
-    $sql = "SELECT cdpessoa, nome, nascimento FROM pessoa where :sexo =$SEXO";
-    $declaracao = retornaVetorConsulta($sql,array(":sexo",'M'));
+    $sql = "SELECT cdpessoa, nome, nascimento FROM pessoa";
+    $declaracao = $link->prepare($sql);
+    $declaracao->execute();
+
     /* liga uma coluna do banco a uma variavel PHP */
     $declaracao->bindColumn('nascimento', $nascimento);
     $declaracao->bindColumn('cdpessoa', $cdpessoa);
