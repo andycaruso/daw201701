@@ -62,26 +62,38 @@ if(isset($_REQUEST['acao'])){
 
 
 //consulta via PDO
-    $sql = "SELECT cdmatricula, pessoa.cdpessoa as COD,nome,matricula.cdcurso,nmcurso from pessoa JOIN matricula ON matricula.cdpessoa = pessoa.cdpessoa JOIN curso ON matricula.cdcurso = curso.cdcurso";
+    $sql = "SELECT cdmatricula,nome,matricula.cdcurso,nmcurso from pessoa JOIN matricula ON matricula.cdpessoa = pessoa.cdpessoa JOIN curso ON matricula.cdcurso = curso.cdcurso";
     $declaracao = $link->prepare($sql);
     $declaracao->execute();
 
     /* liga uma coluna do banco a uma variavel PHP */
-    $declaracao->bindColumn('COD', $cdpessoa);
+    $declaracao->bindColumn('nome', $nome);
     $declaracao->bindColumn('cdcurso', $cdcurso);
     $declaracao->bindColumn('nmcurso', $nmcurso);
     $declaracao->bindColumn('cdmatricula', $cdmatricula);
-    $declaracao->bindColumn('nome', $nome); 
 
-   
     //<table border='1'>
     geraTag("table",0,array("border"=>"1"));
+    geraTag("tr",0);
+    geraTag("td",0);
+    echo ("Matrícula(COD)");
+    geraTag("td",1);
+    geraTag("td",0);
+    echo ("Nome");
+    geraTag("td",1);
+    geraTag("td",0);
+    echo ("Curso");
+    geraTag("td",1);
+    geraTag("td",0);
+    echo ("Operações");
+    geraTag("td",1);
+    geraTag("tr",1);
     if ($declaracao->rowCount() > 0) {
       while ($registro = $declaracao->fetch(PDO::FETCH_BOUND)) {
        geraTag("form",0,array("method"=>"GET")); 
        geraTag("tr",0);
        geraTag("td",0);
-         geraTag("input",0,array("name"=>"COD",
+       geraTag("input",0,array("name"=>"COD",
                                  "type"=>"text",
                                  "value"=>"$cdmatricula",
                                  "size"=>"11",
