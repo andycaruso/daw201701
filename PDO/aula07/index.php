@@ -10,6 +10,11 @@
 		<li><a href="pessoa/inclui.php">Incluir</a></li>
 		<li><a href="pessoa/consulta.php">Consultar</a></li>
 	</ul>
+	<h2>Matrículas</h2>
+	<ul>
+		<li><a href="matricula/inclui.php">Incluir</a></li>
+		<li><a href="matricula/consulta.php">Consultar</a></li>
+	</ul>
 	<h2>Cidades</h2>
 	<ul>
 		<li><a href="cidade/inclui.php">Incluir</a></li>
