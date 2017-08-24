@@ -6,13 +6,17 @@
 </style>
 <form method="get">
 <?php
-	geraInput('Nome','nome',$nome,$erros);
-	geraInput('Nascimento','nascimento',$nascimento,$erros);
-	       //name tabela campo1  campo2   valor
-	geraSelect("sexo","sexo","cdsexo","nmsexo",$sexo,"Sexo");        
-	       //name    tabela   campo1     campo2    valor
-	geraSelect("cidade","cidade","cdcidade","nmcidade",$cdcidadepessoa,"Cidade");
+	      //name, tabela, campo1,    campo2,    valor,label
+geraSelect("cdpessoa","pessoa","cdpessoa","nome",$cdpessoa,"Pessoa:");    
+
+geraSelect("cdcurso","curso","cdcurso","nmcurso",$cdcurso,"Curso:");    
+	 
 	?>
+	<label for="idanosemstre"></label>
+	<select name="anosemestre" id="idanosemstre">
+		<option value="20171">2017/01</option>
+		<option value="20172">2017/02</option>
+	</select>
 	<br>
 	<input type="submit" name="acao" value="enviar">
 </form>

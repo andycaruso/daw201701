@@ -83,6 +83,7 @@ function geraSelect($nome,$tabela,$campo1,$campo2,$valor,$label){
     //monta a variável que será atributo o id do <select
     $id = "id" . $nome;
     //abre o <select
+    echo("<label for='$id'>$label</label>");
     echo("<select name='$nome' id='$id'>\n");
     echo("<option value=''>--$label--</option>\n");
     	//monta os <option>s do select
