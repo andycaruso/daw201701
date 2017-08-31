@@ -36,8 +36,6 @@ if (isset($_REQUEST['acao'])) {
 		foreach ($erros as $v) {
 			echo (" $v, ");
 		}
-		
-		
 		//exit é fim de programa
 		exit();
 	}
@@ -52,7 +50,8 @@ if (isset($_REQUEST['acao'])) {
 	  try {
 	    $declaracao = $link->prepare($sql);
 	    $declaracao->execute();
-	    echo ("Pessoa incluída com sucesso!");
+	    $id = $link->lastInsertId();
+	    echo ("Pessoa incluída com sucesso! $id");
 	    //limpar as variáveis depois do cadastro
 	    $nome = '';
 	    $sexo = '';

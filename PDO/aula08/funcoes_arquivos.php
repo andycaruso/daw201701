@@ -1,29 +1,33 @@
 <?php
 ////////////////////////////
 //função para upload de fotografia
-//E1: diretório destino
+//E1: diretório destino (terminado por /)
 //E2: nome destino
+//E3: nome do campo file no formulário
 //S: nada
-function enviaFoto($diretorioDestino,$nome){
+function enviaFoto($diretorioDestino,$nome,$campo){
     //basename retira o caminho e retorna somente a parte do nome do arquivo
-    $arquivo_fonte = basename($_FILES["fileToUpload"]["tmp_name"]);
+    $arquivo_fonte = basename($_FILES[$campo]["tmp_name"]);
     //----------------pega a extensão do arquivo
-        //pathinfo retorna um vetor com:
-        //dirname => diretório
+    //pathinfo retorna um vetor com:
+        //dirname => pasta 
         //extension => extensão do arquivo
         //filename => nome do arquivo
-    $vetorCaminho = pathinfo(basename($_FILES["fileToUpload"]["name"]));
+    $vetorCaminho = pathinfo(basename($_FILES[$campo]["name"]));
     $tipoArquivoImagem = $vetorCaminho['extension'];
     //-------------------------------------------
     $arquivo_destino = $diretorioDestino . $nome . "." . $tipoArquivoImagem;
+    //flag para teste de erro
     $uploadOk = 1;
     
 
     // testa se é uma imagem
-    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    //getimagesize retorna false se arquivo não é uma imagem
+    $check = getimagesize($_FILES[$campo]["tmp_name"]);
+    //echo("<pre>");
+   // print_r($check);
     if($check !== false) {
         echo "Arquivo é uma imagem - " . $check["mime"] . ".<br>";
-        $uploadOk = 1;
     } else {
         echo "Arquivo não é uma imagem.<br>";
         $uploadOk = 0;
@@ -36,7 +40,9 @@ function enviaFoto($diretorioDestino,$nome){
     }*/
 
     // /testa se o tamanho do arquivo não excede o máximo
-    if ($_FILES["fileToUpload"]["size"] > 500000) {
+    //$_FILES[$campo]["size"] contém o tamanho do arquivo em bytes 
+   // echo($_FILES[$campo]["size"]);
+    if ($_FILES[$campo]["size"] > 500000) {
         echo "Tamanho do arquivo excede tamanho máximo permitido<br>"; 
         $uploadOk = 0;
     }
@@ -51,12 +57,11 @@ function enviaFoto($diretorioDestino,$nome){
         echo "Erro enviando arquivo.<br>";
     // caso contrário tenta o upload
     } else {
-        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $arquivo_destino)) {
+        if (move_uploaded_file($_FILES[$campo]["tmp_name"], $arquivo_destino)) {
             echo "Arquivo $arquivo_destino foi enviado.<br>";
         } else {
             echo "Houve um erro enviando o arquivo.<br>";
         }
     }
 }
-
 ?>
