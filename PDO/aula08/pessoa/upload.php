@@ -1,3 +1,5 @@
+<!-- forms para upload de arquivo obrigatoriamente
+devem ser por post e conter o atributo enctype="multpart/form-data" -->
 <form method="post" enctype="multipart/form-data">
     Escolha uma imagem:
     <input type="file" name="imagem">

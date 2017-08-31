@@ -1,5 +1,6 @@
 <?php
 require("../funcoes.php");
+require("../funcoes_arquivos.php");
 
 $erros = array();
 //testa se $_REQUEST foi criado pelo envio de um form
@@ -50,8 +51,10 @@ if (isset($_REQUEST['acao'])) {
 	  try {
 	    $declaracao = $link->prepare($sql);
 	    $declaracao->execute();
+	    //lastInsertId() retorna o último código AI gerado
 	    $id = $link->lastInsertId();
-	    echo ("Pessoa incluída com sucesso! $id");
+	    echo ("Pessoa incluída com sucesso!");
+	    enviaFoto("fotos/",$id,"imagem");
 	    //limpar as variáveis depois do cadastro
 	    $nome = '';
 	    $sexo = '';
