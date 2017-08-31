@@ -2,6 +2,7 @@
 require("../funcoes.php");
 require("../funcoes_arquivos.php");
 
+
 $erros = array();
 //testa se $_REQUEST foi criado pelo envio de um form
 if (isset($_REQUEST['acao'])) {
