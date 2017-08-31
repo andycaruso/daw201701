@@ -3,7 +3,7 @@
    $sql = "DELETE From `matricula` where `cdmatricula`= :cod";
     try {
       $declaracao = $link->prepare($sql);
-      $declaracao->bindParam(':cod', $cod);
+      $declaracao->bindParam(':cod', $COD);
       $declaracao->execute();
       //rowCount é um método que retorna o número de linhas
       //afetadas pela última chamada ao método execute

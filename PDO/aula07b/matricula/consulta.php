@@ -3,9 +3,9 @@ require_once("../funcoes.php");
 $erros = array();
 
 if(isset($_REQUEST['acao'])){
+  $COD = $_REQUEST['COD'];
   switch ($_REQUEST['acao']) {
     case 'Sim':
-    $cod = $_REQUEST['COD'];
       //rotina de exclusão
       require_once("exclui.php");
       break;
@@ -14,42 +14,14 @@ if(isset($_REQUEST['acao'])){
           require_once("altera.php");
     break;
     case 'Alterar':
-      $COD = $_REQUEST['COD'];
-      $sql = "SELECT situacao FROM matricula where cdmatricula=$COD";
-      try {
-        $declaracao = $link->prepare($sql);
-        $declaracao->execute();
-        /* liga uma coluna do banco a uma variavel PHP */
-        $declaracao->bindColumn('situacao', $situacao);
-        //->rowCount retorna o número de registros
-        //retornados pela consulta
-        if ($declaracao->rowCount() > 0) {
-          $registro = $declaracao->fetch(PDO::FETCH_BOUND); 
-        }
-       }//fim try
-      catch (PDOException $e) {
-        print $e->getMessage();
-      }
-      
+      require_once("inc/consulta_confirmacao_alterar.php");
       require_once("frm_altera.php");
       break;
     case 'Excluir':
-      $COD = $_REQUEST['COD'];
-      echo ("Tem certeza que deseja excluir a Matrícula de código = $COD \n");
-       geraTag("form",0,array("method"=>"GET")); 
-       geraTag("input",0,array("name"=>"acao",
-                               "type"=>"submit",
-                               "value"=>"Sim"));
-       geraTag("input",0,array("type"=>"submit",
-                               "value"=>"Não"));
-       geraTag("input",0,array("name"=>"COD",
-                               "type"=>"hidden",
-                               "value"=>"$COD"));
-        geraTag("form",1); 
+      require("inc/consulta_confirmacao_excluir.php"); 
         break;
   }
 }
-
 //consulta via PDO
     $sql = "SELECT cdmatricula,nome,nmsituacao,matricula.cdcurso,nmcurso from pessoa JOIN matricula ON matricula.cdpessoa = pessoa.cdpessoa JOIN curso ON matricula.cdcurso = curso.cdcurso JOIN situacao ON situacao.cdsituacao = matricula.situacao"; 
     $declaracao = $link->prepare($sql);
@@ -77,5 +49,4 @@ if(isset($_REQUEST['acao'])){
     else {
       echo("nenhum registro localizado");
     }
-  
 ?>

@@ -1,6 +1,5 @@
 <?php
 require("../funcoes.php");
-
 $erros = array();
 //testa se $_REQUEST foi criado pelo envio de um form
 if (isset($_REQUEST['acao'])) {
@@ -32,8 +31,7 @@ if (isset($_REQUEST['acao'])) {
 		foreach ($erros as $v) {
 			echo (" $v, ");
 		}
-		
-		
+
 		//exit é fim de programa
 		exit();
 	}
@@ -61,7 +59,4 @@ if (isset($_REQUEST['acao'])) {
 	}//fim if($acao ...
 }//fim if isset...
 require("frm_inclui.php");
-
-
-
 ?>
