@@ -1,5 +1,7 @@
 <?php
+
 require_once("../funcoes.php");
+require_once("../login.php");
 $erros = array();
 
 if(isset($_REQUEST['acao'])){

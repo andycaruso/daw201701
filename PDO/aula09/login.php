@@ -3,7 +3,7 @@ require_once("funcoes.php");
 //inicia sessão. 
 session_start();
 //caminho para reload da pagina
-$URL = "Location: http://localhost/aulas/DAW/daw201701/PDO/aula09/";
+$URL = "Location: http://localhost/aulas/DAW/daw201701/PDO/aula09/index.php";
 //teste se usuário não está logado
 if(!isset($_SESSION['user'])){
 	//rotina de login
@@ -20,7 +20,6 @@ if(!isset($_SESSION['user'])){
 		if ($declaracao->rowCount() > 0){
 			//guarda usuario na variavel de sessao
 			$_SESSION['user'] = $user;
-			echo ("Login realizado com sucesso.");
 			header($URL);
 		}
 		else {

@@ -1,4 +1,5 @@
 <?php
+require_once("../login.php");
 $COD = $_REQUEST['COD'];
 $nome = $_REQUEST['nome'];
 $nascimento = $_REQUEST['nascimento'];

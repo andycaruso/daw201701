@@ -1,6 +1,7 @@
 <?php
-require("../funcoes.php");
 
+require("../funcoes.php");
+require_once("../login.php");
 $erros = array();
 //testa se $_REQUEST foi criado pelo envio de um form
 if (isset($_REQUEST['acao'])) {
