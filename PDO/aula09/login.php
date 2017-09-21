@@ -9,7 +9,7 @@ if(!isset($_SESSION['user'])){
 	//rotina de login
 	if(isset($_REQUEST['acao_login'])){
 		$user = $_REQUEST['user'];
-		$pass = $_REQUEST['pass'];
+		$pass = md5($_REQUEST['pass']);
 		//consulta a base e procura usuario e senha
 		$sql = "SELECT * from usuario where user=:user and pass=:pass"; 
 	    $declaracao = $link->prepare($sql);
