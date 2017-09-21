@@ -3,7 +3,6 @@ require("conecta.php");
 //desabilita warnings 
 error_reporting("E_ALL & ~NOTICE");
 
-
 ///////////////////////////////
 //E1:nome da tag 
 //E2:0 abre tag, 1 fecha tag
