@@ -46,10 +46,10 @@ function enviaFoto($diretorioDestino,$nome,$campo){
         echo "Tamanho do arquivo excede tamanho máximo permitido<br>"; 
         $uploadOk = 0;
     }
-    // permite somente as extensoes jpg,png e gif
-    if($tipoArquivoImagem != "jpg" && $tipoArquivoImagem != "png" && $tipoArquivoImagem != "jpeg"
-    && $tipoArquivoImagem != "gif" ) {
-        echo "Somente JPG, JPEG, PNG & GIF são permitidos. ($tipoArquivoImagem)<br>";
+    // permite somente as extensoes jpg
+    if($tipoArquivoImagem != "jpg"  ) {
+        echo "Somente JPG é permitido. ($tipoArquivoImagem)<br>";
+        //&& $tipoArquivoImagem != "png" && $tipoArquivoImagem != "jpeg" && $tipoArquivoImagem != "gif"
         $uploadOk = 0;
     }
     // testa se houve algum erro

@@ -92,6 +92,12 @@ if(isset($_REQUEST['acao'])){
          echo ($nome);
        geraTag("td",1);
        geraTag("td",0);
+        $aux = "fotos/" . $cdpessoa . ".jpg";
+        geraTag("img",0,array("src"=>$aux,
+                              "width"=>"100"));
+         
+       geraTag("td",1);
+       geraTag("td",0);
          echo (converteDataHumano($nascimento));
        geraTag("td",1);
        geraTag("td",1);
