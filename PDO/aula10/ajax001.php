@@ -30,6 +30,7 @@
 			width:100%;
 			height:150px;
 			padding:2px;
+			overflow:auto;
 		}
 
 	</style>
@@ -63,15 +64,18 @@
 			Texto 3
 		</div>
 	</div>
-	<script>
-		//função padrão do jQuery que será chamada
-		//após todo o documento ter sido carregado
-		$(function(){
-			//associando um evento
-			$("#btn1").click(function(){
-				$("#pn1").toggle();
-			});	
-		});
-	</script>
+<script>
+//função padrão do jQuery que será chamada
+//após todo o documento ter sido carregado
+$(function(){
+	//associando um evento
+	$("#btn1").click(function(){
+		$("#pn1 .painel_corpo").load("lista_pessoas.php");
+	});	
+	$("#btn2").click(function(){
+		$("#pn2 .painel_corpo").load("imagem.htm");
+	});	
+});
+</script>
 </body>
 </html>
