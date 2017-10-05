@@ -21,6 +21,7 @@
 			width:100%;
 			height:50px;
 			background-color:teal;	
+			display:inline-block;
 			color:white;	
 			padding:2px;
 		}
@@ -34,34 +35,41 @@
 	</style>
 </head>
 <body>
-
+	
+	<input type="button" id="btn1" value="botão 1">
+	<input type="button" id="btn2" value="botão 2">
+	<input type="button" id="btn3" value="botão 3"><br><br>
 	<div class="painel" id="pn1">
 		<div class="painel_cabeca">
-			Painel fofinho
+			Painel 1
 		</div>
 		<div class="painel_corpo">
-			O fim de semana se aproxima!
+			Texto
 		</div>
 	</div>
-	
+	<div class="painel" id="pn2">
+		<div class="painel_cabeca">
+			Painel 2
+		</div>
+		<div class="painel_corpo">
+			Texto 2
+		</div>
+	</div>
+	<div class="painel" id="pn3">
+		<div class="painel_cabeca">
+			Painel 3
+		</div>
+		<div class="painel_corpo">
+			Texto 3
+		</div>
+	</div>
 
 	<script>
-		//esta funçao padrão do jQuery
-		//será executada automaticamente
-		//quando toda a página terminar
-		//de ser carregada
+		//função padrão do jQuery que será chamada
+		//após todo o documento ter sido carregado
 		$(function(){
-
-			alert('oi');
-			//$('#pn1').hide(500);
-			//$('#pn1').show(500);
-			//EFEITOS DE CORTINA
-			$('#pn1').slideUp(1000);
-			$('#pn1').slideDown(1000);
-
-			//Efeitos de fade
-			$('#pn1').fadeOut(1000);
-			$('#pn1').fadeIn(1000);
+			
+		
 		});
 
 
