@@ -3,6 +3,7 @@
 <head>
 	<title>Introdução ao jQuery</title>
 	<meta charset="utf-8">
+	<script type="text/javascript" src="jquery/jquery-3.2.1.min.js"></script>
 	<style type="text/css">
 		div {
 			font-family:sans-serif;	
@@ -20,7 +21,6 @@
 			width:100%;
 			height:50px;
 			background-color:teal;	
-			display:inline-block;
 			color:white;	
 			padding:2px;
 		}
@@ -37,20 +37,13 @@
 
 	<div class="painel" id="pn1">
 		<div class="painel_cabeca">
-			Painel 1
+			Painel fofinho
 		</div>
 		<div class="painel_corpo">
-			Texto 1
+			O fim de semana se aproxima!
 		</div>
 	</div>
-	<div class="painel" id="pn2">
-		<div class="painel_cabeca">
-			Painel 2
-		</div>
-		<div class="painel_corpo">
-			Texto 2
-		</div>
-	</div>
+	
 
 	<script>
 	
