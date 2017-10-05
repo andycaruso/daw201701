@@ -63,24 +63,23 @@
 			Texto 3
 		</div>
 	</div>
-
 	<script>
 		//função padrão do jQuery que será chamada
 		//após todo o documento ter sido carregado
 		$(function(){
-			//modificando CSS via jQuery
-			$("#pn1 .painel_cabeca").css({'background-color':'red'});
-			$("#pn2").css({'background-color':'blue'});
-
-			//modificando o conteudo entre tag e /tag
-			$("#pn3 .painel_corpo").html('novo texto');
+			//associando um evento
+			$("#btn1").click(function(){
+				$("#pn1").toggle();
+			});
+			
+			$("#btn2").click(function(){
+				$("#pn2").toggle();
+			});
 		
+			$("#btn3").click(function(){
+				$("#pn3").toggle();
+			});
 		});
-
-
 	</script>
-
-
-
 </body>
 </html>

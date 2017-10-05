@@ -68,13 +68,19 @@
 		//função padrão do jQuery que será chamada
 		//após todo o documento ter sido carregado
 		$(function(){
-			//modificando CSS via jQuery
-			$("#pn1 .painel_cabeca").css({'background-color':'red'});
-			$("#pn2").css({'background-color':'blue'});
+			//associando um evento
+			//click
+			$("#btn1").click(function(){
+				alert('clicou');
 
-			//modificando o conteudo entre tag e /tag
-			$("#pn3 .painel_corpo").html('novo texto');
-		
+			});
+			
+			//hover
+			$("#btn2").hover(function(){
+				alert('passou por cima');
+
+			});
+			
 		});
 
 
