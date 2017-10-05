@@ -7,7 +7,7 @@
 <style type="text/css">
 div {
 	font-family:sans-serif;	
-	display:inline-block;
+	display:block;
 	box-sizing:border-box;
 }
 .painel {
@@ -44,7 +44,14 @@ div {
 
 <input type="button" id="btn1" value="botão 1"><br>
 
-
+<div class="painel">
+	<div class="painel_cabeca">
+		Painel 1
+	</div>
+	<div class="painel_corpo">
+		Texto
+	</div>
+</div>
 <div id="original">
 	
 </div>
@@ -56,9 +63,9 @@ div {
 $(function(){
 //associando um evento
 $("#btn1").click(function(){
-	//copia todo objeto com classe
+	//copia lo primeiro objeto com classe
 	//painel e guarda em variavel p
-	var p = $(".painel").clone();
+	var p = $(".painel").first().clone();
 	//insere no objeto de id = original
 	//o conteudo da variavel p
 	$("#original").append(p);
