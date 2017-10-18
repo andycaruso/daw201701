@@ -12,10 +12,10 @@ div {
 }
 .painel {
 	border:1px solid gray;
-	width:100px;
+	width:150px;
 	height:100px;
 	background-color:white;
-	display:none;
+	display:inline-block;
 }
 .painel_cabeca {
 	width:100%;
@@ -32,19 +32,20 @@ div {
 	padding:2px;
 }
 
-#original {
-	border:1px dotted red;
-	min-width:300px;
-	min-height:300px;
-
+#painel2 {
+	display:none;
 }
+
 </style>
 </head>
 <body>
 
-<input type="button" id="btn1" value="botão 1"><br>
+<input type="button" id="botao1" value="Esconde #painel1">
+<input type="button" id="botao2" value="Mostra #painel1">
+<input type="button" id="botao3" value="Mostra #painel2">
+<input type="button" id="botao4" value="Esconde #painel2"><hr>
 
-<div class="painel">
+<div class="painel" id="painel1">
 	<div class="painel_cabeca">
 		Painel 1
 	</div>
@@ -52,8 +53,13 @@ div {
 		Texto
 	</div>
 </div>
-<div id="original">
-	
+<div class="painel" id="painel2">
+	<div class="painel_cabeca">
+		Painel 2
+	</div>
+	<div class="painel_corpo">
+		Texto
+	</div>
 </div>
 
 
@@ -61,18 +67,8 @@ div {
 <script>
 
 $(function(){
-//associando um evento
-$("#btn1").click(function(){
-	//copia lo primeiro objeto com classe
-	//painel e guarda em variavel p
-	var p = $(".painel").first().clone();
-	//insere no objeto de id = original
-	//o conteudo da variavel p
-	$("#original").append(p);
-	//mostra o objeto que foi inserido
-	$("#original .painel").show();
-});
 
+	
 
 });
 </script>

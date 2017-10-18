@@ -35,52 +35,56 @@
 	</style>
 </head>
 <body>
-	
-	<input type="button" id="btn1" value="botão 1">
-	<input type="button" id="btn2" value="botão 2">
-	<input type="button" id="btn3" value="botão 3"><br><br>
+	<input type="text" id="cor1">
+	<button id="btn1">Muda a largura da borda do painel 1</button> <br>
+	<input type="text" id="cor2">
+	<button id="btn2">Muda a cor da borda do painel 1</button> <br>
+	Tipo de borda:
+	<select id="tipoborda">
+		<option value="none">sem borda</option>
+		<option value="solid">sólida</option>
+		<option value="dotted">pontilhada</option>
+		<option value="dashed">tracejada</option>
+		<option value="groove">sulcada</option>
+	</select>
+	<hr>
 	<div class="painel" id="pn1">
 		<div class="painel_cabeca">
 			Painel 1
 		</div>
 		<div class="painel_corpo">
-			Texto
+			Texto 1
 		</div>
 	</div>
-	<div class="painel" id="pn2">
-		<div class="painel_cabeca">
-			Painel 2
-		</div>
-		<div class="painel_corpo">
-			Texto 2
-		</div>
-	</div>
-	<div class="painel" id="pn3">
-		<div class="painel_cabeca">
-			Painel 3
-		</div>
-		<div class="painel_corpo">
-			Texto 3
-		</div>
-	</div>
-
-	<script>
-		//função padrão do jQuery que será chamada
-		//após todo o documento ter sido carregado
-		$(function(){
-			//modificando CSS via jQuery
-			$("#pn1 .painel_cabeca").css({'background-color':'red'});
-			$("#pn2").css({'background-color':'blue'});
-
-			//modificando o conteudo entre tag e /tag
-			$("#pn3 .painel_corpo").html('novo texto');
+	
+<script>
+$(function(){
 		
-		});
+	$("#btn1").click(function(){
+		//pega o valor da caixa #cor1 e guarda em c
+		var c = $('#cor1').val();
+		//atribui à propriedade background-color
+		$("#pn1").css({'border-width':c});	
+	});
+
+	$("#btn2").click(function(){
+		//pega o valor da caixa #cor1 e guarda em c
+		var c = $('#cor2').val();
+		//atribui à propriedade background-color
+		$("#pn1").css({'border-color':c});	
+	});
+
+	//evento disparado quando se muda o valor da caixa select
+	$("#tipoborda").change(function(){
+		//pega o valor da caixa #cor1 e guarda em c 
+		var c = $("#tipoborda").val();
+		//atribui à propriedade background-color
+		$("#pn1").css({'border-style':c});	
+	});
 
 
-	</script>
-
-
+});
+</script>
 
 </body>
 </html>

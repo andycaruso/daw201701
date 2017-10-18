@@ -31,62 +31,40 @@
 			height:150px;
 			padding:2px;
 		}
-
+		
 	</style>
 </head>
 <body>
-	
-	<input type="button" id="btn1" value="botão 1">
-	<input type="button" id="btn2" value="botão 2">
-	<input type="button" id="btn3" value="botão 3"><br><br>
+	<form id="form1" method="post">
+	Cadastrar novo Estado:<input type="text" name="nmestado" size="2" maxlength="2"> <br>
+	<input type="button" id="btn1" value="enviar">
+	</form>
 	<div class="painel" id="pn1">
 		<div class="painel_cabeca">
-			Painel 1
+			Estados:
 		</div>
 		<div class="painel_corpo">
-			Texto
+		
 		</div>
 	</div>
-	<div class="painel" id="pn2">
-		<div class="painel_cabeca">
-			Painel 2
-		</div>
-		<div class="painel_corpo">
-			Texto 2
-		</div>
-	</div>
-	<div class="painel" id="pn3">
-		<div class="painel_cabeca">
-			Painel 3
-		</div>
-		<div class="painel_corpo">
-			Texto 3
-		</div>
-	</div>
+<script>
+$(function(){
+	
+	$("#btn1").click(function(){
+		//serialize pega todos os campos do form e transforma
+		//em um vetor para ser feito o post
+		$.post( "inclui_estado.php", $("#form1").serialize())
+		  .done(function(data) { //tudo certo com a requiscao 
+	   		 $(".painel_corpo").html(data);
+		  })
+		  .fail(function(data) { //erro na requisicao
+		   	 $(".painel_corpo").html("erro requisicao");
+		  }); //fim post
+  	}); //fim click
 
-	<script>
-		//função padrão do jQuery que será chamada
-		//após todo o documento ter sido carregado
-		$(function(){
-			//associando um evento
-			//click
-			$("#btn1").click(function(){
-				alert('clicou');
+});//fim $(function)
 
-			});
-			
-			//hover
-			$("#btn2").hover(function(){
-				alert('passou por cima');
-
-			});
-			
-		});
-
-
-	</script>
-
-
+</script>
 
 </body>
 </html>

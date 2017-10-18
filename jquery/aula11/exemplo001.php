@@ -35,7 +35,11 @@
 	</style>
 </head>
 <body>
-
+	<input type="text" id="cor1">
+	<button id="btn1">Muda a cor barra do painel 1</button> <br>
+	<input type="text" id="cor2">
+	<button id="btn2">Muda a cor do título do painel 1</button> <br>
+	<hr>
 	<div class="painel" id="pn1">
 		<div class="painel_cabeca">
 			Painel 1
@@ -44,48 +48,27 @@
 			Texto 1
 		</div>
 	</div>
-	<div class="painel" id="pn2">
-		<div class="painel_cabeca">
-			Painel 2
-		</div>
-		<div class="painel_corpo">
-			Texto 2
-		</div>
-	</div>
+	
+<script>
+$(function(){
+		
+	$("#btn1").click(function(){
+		//pega o valor da caixa #cor1 e guarda em c
+		var c = $('#cor1').val();
+		//atribui à propriedade background-color
+		$("#pn1 .painel_cabeca").css({'background-color':c});	
+	});
 
-	<script>
-		//função padrão do jQuery que será chamada
-		//após todo o documento ter sido carregado
-		$(function(){
-			//javascript puro!
-			alert("olá");
-			//seleciona um elemento da página pelo id (#)
-			//chama o método hide() que esconde o elemento
-			//passa o parametro 1000 (1000 mili segundos)
-			//que fará que a animação de esconder leve 1 segundo
-			$('#pn1').hide(1000);
-			//chama o método show() que mostra o elemento que foi escondido 
-			//$('#pn1').show(1000);	
-
-			//slideDown() mostra o elemento com animação "cortina"
-			$('#pn1').slideDown('300');	
-
-			//slideUp() esconde o elemento com animação "cortina"
-		//	$('#pn1').slideUp('1300');	
-
-			//fadeOut esconde o elemento com efeito "desaparecer"
-			$('#pn1').fadeOut('300');	
-
-			//fadeOut mostra o elemento com efeito "reaparecer"
-			$('#pn1').fadeIn('300');
+	$("#btn2").click(function(){
+		//pega o valor da caixa #cor1 e guarda em c
+		var c = $('#cor2').val();
+		//atribui à propriedade background-color
+		$("#pn1 .painel_cabeca").css({'color':c});	
+	});
 
 
-		});
-
-
-	</script>
-
-
+});
+</script>
 
 </body>
 </html>
