@@ -13,7 +13,7 @@
 		.painel {
 			border:1px solid gray;
 			width:300px;
-			height:200px;
+			height:500px;
 			background-color:white;
 		
 		}
@@ -30,46 +30,47 @@
 			width:100%;
 			height:150px;
 			padding:2px;
+			overflow:auto;
 		}
-
+		
 	</style>
 </head>
 <body>
-<h1>Alterando estilos</h1>
-	<input type="text" id="cor1">
-	<button id="btn1">Muda a cor barra do painel 1</button> <br>
-	<input type="text" id="cor2">
-	<button id="btn2">Muda a cor do título do painel 1</button> <br>
-	<hr>
+<h1>Adicionando linhas de texto à uma DIV dinamicamente</h1>
+	<form id="form1" method="post">
+		Criar pedido<br>
+		<input type="text" id="cliente" name="cliente">
+		<input type="text" id="prato" name="prato">
+		<input type="button" id="btn1" value="enviar">
+		</form>
 	<div class="painel" id="pn1">
 		<div class="painel_cabeca">
-			Painel 1
+			Pedidos
 		</div>
 		<div class="painel_corpo">
-			Texto 1
+		
 		</div>
 	</div>
-	
 <script>
 $(function(){
-		
+	
 	$("#btn1").click(function(){
-		//pega o valor da caixa #cor1 e guarda em c
-		var c = $('#cor1').val();
-		//atribui à propriedade background-color
-		$("#pn1 .painel_cabeca").css({'background-color':c});	
-	});
+		  	//monta o texto de cada pedido
+		  	var texto = "" + "Cliente: " + $("#cliente").val() 
+		  	+ " - Pedido: " + $("#prato").val() + "<br>";
+		  	
+		  	//adiciona o pedido ao painel
+	   		$(".painel_corpo").append(texto);
 
-	$("#btn2").click(function(){
-		//pega o valor da caixa #cor1 e guarda em c
-		var c = $('#cor2').val();
-		//atribui à propriedade background-color
-		$("#pn1 .painel_cabeca").css({'color':c});	
-	});
+	   		//limpa as caixas de texto
+	   		$("#cliente").val("");
+	   		$("#prato").val("");
 
+  	}); //fim click
 
-});
+});//fim $(function)
+
 </script>
-<hr><a href="exemplo002.php">Exemplo 2</a>
+<hr><a href="exemplo004.php">Exemplo 4</a>-<a href="exemplo006.php">Exemplo 6</a>
 </body>
 </html>

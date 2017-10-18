@@ -12,8 +12,8 @@ div {
 }
 .painel {
 	border:1px solid gray;
-	width:150px;
-	height:100px;
+	width:250px;
+	height:200px;
 	background-color:white;
 	display:inline-block;
 }
@@ -39,37 +39,23 @@ div {
 </style>
 </head>
 <body>
-<h1>Faça com que os botões funcionem corretamente</h1>
-<input type="button" id="botao1" value="Esconde #painel1">
-<input type="button" id="botao2" value="Mostra #painel1">
-<input type="button" id="botao3" value="Mostra #painel2">
-<input type="button" id="botao4" value="Esconde #painel2"><hr>
+
+<h1>Quando o botão for clicado, troque o título do painel pelo texto digitado na caixa</h1>
+Título do painel:<input type="text" id="titulo">
+<input type="button" id="botao1" value="Trocar título painel"><hr>
 
 <div class="painel" id="painel1">
 	<div class="painel_cabeca">
-		Painel 1
+		Título do painel 
 	</div>
 	<div class="painel_corpo">
-		Texto
+		carregar aqui
 	</div>
 </div>
-<div class="painel" id="painel2">
-	<div class="painel_cabeca">
-		Painel 2
-	</div>
-	<div class="painel_corpo">
-		Texto
-	</div>
-</div>
-
 
 <script>
+	//resposta aqui
 
-$(function(){
-
-	//resposta
-
-});
 </script>
 </body>
 </html>

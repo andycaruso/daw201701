@@ -13,7 +13,7 @@
 		.painel {
 			border:1px solid gray;
 			width:300px;
-			height:200px;
+			height:500px;
 			background-color:white;
 		
 		}
@@ -30,41 +30,50 @@
 			width:100%;
 			height:150px;
 			padding:2px;
+			overflow:auto;
 		}
 		
 	</style>
 </head>
 <body>
-	<form id="form1" method="post">
-	Cadastrar novo Estado:<input type="text" name="nmestado" size="2" maxlength="2"> <br>
-	<input type="button" id="btn1" value="enviar">
-	</form>
-	<div class="painel" id="pn1">
-		<div class="painel_cabeca">
-			Estados:
-		</div>
-		<div class="painel_corpo">
+<h1>Algumas funções javascript úteis para lidar com strings</h1>
+		Texto:<input type="text" id="texto" name="texto"><br>
+		Comprimento do texto:<input type="text" id="comprimento"><br>
+		Comprimento do texto sem espaços nas extremidades:<input type="text" id="comprimento2"><hr>
 		
-		</div>
-	</div>
+		<input type="button" id="btn1" value="testar">
+	
 <script>
 $(function(){
-	
+
+	//click do botao
 	$("#btn1").click(function(){
-		//serialize pega todos os campos do form e transforma
-		//em um vetor para ser feito o post
-		$.post( "inclui_estado.php", $("#form1").serialize())
-		  .done(function(data) { //tudo certo com a requiscao 
-	   		 $(".painel_corpo").html(data);
-		  })
-		  .fail(function(data) { //erro na requisicao
-		   	 $(".painel_corpo").html("erro requisicao");
-		  }); //fim post
+
+		//pega o valor da caixa
+		var texto = $("#texto").val();
+		//converte o objeto texto em um string
+		texto = texto.toString();
+
+		//guarda em comprimento o tamanho da string
+		var comprimento = texto.length;
+
+		//coloca o valor na caixa
+		$("#comprimento").val(comprimento);
+
+		//retira espacos em branco do string
+		texto = texto.trim();
+
+		//guarda em comprimento o tamanho da string
+		comprimento = texto.length;
+
+		//coloca o valor na caixa
+		$("#comprimento2").val(comprimento);
+
   	}); //fim click
 
 });//fim $(function)
 
 </script>
-
+<hr><a href="exemplo002.php">Exemplo 2</a>-<a href="exemplo004.php">Exemplo 4</a>
 </body>
 </html>

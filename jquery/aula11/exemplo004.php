@@ -13,7 +13,7 @@
 		.painel {
 			border:1px solid gray;
 			width:300px;
-			height:200px;
+			height:500px;
 			background-color:white;
 		
 		}
@@ -32,50 +32,42 @@
 			padding:2px;
 			overflow:auto;
 		}
+		
+		.atencao {
+			color:red;
+			font-weight:bold;
+		}
 
 	</style>
 </head>
 <body>
-	
-	<input type="button" id="btn1" value="botão 1">
-	<input type="button" id="btn2" value="botão 2">
-	<input type="button" id="btn3" value="botão 3"><br><br>
+<h1>Adicionando e removendo classes dinamicamente</h1>
+	<input type="button" id="btn1" value="adicionar"><br>
+	<input type="button" id="btn2" value="remover"><br>
 	<div class="painel" id="pn1">
 		<div class="painel_cabeca">
-			Painel 1
+			Pedidos
 		</div>
 		<div class="painel_corpo">
-			Texto
-		</div>
-	</div>
-	<div class="painel" id="pn2">
-		<div class="painel_cabeca">
-			Painel 2
-		</div>
-		<div class="painel_corpo">
-			Texto 2
-		</div>
-	</div>
-	<div class="painel" id="pn3">
-		<div class="painel_cabeca">
-			Painel 3
-		</div>
-		<div class="painel_corpo">
-			Texto 3
+			Texto 
 		</div>
 	</div>
 <script>
-//função padrão do jQuery que será chamada
-//após todo o documento ter sido carregado
 $(function(){
-	//associando um evento
+	
 	$("#btn1").click(function(){
-		$("#pn1 .painel_corpo").load("lista_pessoas.php");
-	});	
-	$("#btn2").click(function(){
-		$("#pn2 .painel_corpo").load("imagem.htm");
-	});	
-});
+		  	$(".painel_corpo").addClass('atencao');
+
+  	}); //fim click
+
+  	$("#btn2").click(function(){
+		  	$(".painel_corpo").removeClass('atencao');
+
+  	}); //fim click
+
+});//fim $(function)
+
 </script>
+<hr><a href="exemplo003.php">Exemplo 3</a>-<a href="exemplo005.php">Exemplo 5</a>
 </body>
 </html>

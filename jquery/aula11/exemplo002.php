@@ -35,6 +35,7 @@
 	</style>
 </head>
 <body>
+<h1>Usando o evento change</h1>
 	<input type="text" id="cor1">
 	<button id="btn1">Muda a largura da borda do painel 1</button> <br>
 	<input type="text" id="cor2">
@@ -85,6 +86,6 @@ $(function(){
 
 });
 </script>
-
+<hr><a href="exemplo001.php">Exemplo 1</a>-<a href="exemplo003.php">Exemplo 3</a>
 </body>
 </html>
