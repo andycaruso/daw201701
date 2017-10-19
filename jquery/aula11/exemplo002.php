@@ -36,9 +36,9 @@
 </head>
 <body>
 <h1>Usando o evento change</h1>
-	<input type="text" id="cor1">
+	<input type="text" id="largura">
 	<button id="btn1">Muda a largura da borda do painel 1</button> <br>
-	<input type="text" id="cor2">
+	<input type="text" id="cor">
 	<button id="btn2">Muda a cor da borda do painel 1</button> <br>
 	Tipo de borda:
 	<select id="tipoborda">
@@ -60,8 +60,34 @@
 	
 <script>
 $(function(){
-		
+$('#btn1').click(function() {
 
+	var c = $('#largura').val();
+
+	//muda o estilo ccs do id=meupainel
+	$('#pn1').css({'border-width':c});
+	
+});	
+
+$('#btn2').click(function() {
+
+	var c = $('#cor').val();
+
+	//muda o estilo ccs do id=meupainel
+	$('#pn1').css({'border-color':c});
+	
+});	
+
+//change é um evento que dispara quando
+//o valor da caixa muda
+$('#tipoborda').change(function() {
+
+	var c = $('#tipoborda').val();
+
+	//muda o estilo ccs do id=meupainel
+	$('#pn1').css({'border-style':c});
+	
+});	
 });
 </script>
 <hr><a href="exemplo001.php">Exemplo 1</a>-<a href="exemplo003.php">Exemplo 3</a>
