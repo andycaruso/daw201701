@@ -53,7 +53,12 @@
 	</div>
 <script>
 $(function(){
-	
+	$('#btn1').click(function() {
+		//adiciona um novo elemento ao(s)
+		//objeto(s) de classe .painel_corpo
+		$('.painel_corpo').append('texto<br>');
+
+	});
 	
 
 });//fim $(function)
