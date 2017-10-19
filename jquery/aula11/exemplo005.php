@@ -54,19 +54,7 @@
 <script>
 $(function(){
 	
-	$("#btn1").click(function(){
-		  	//monta o texto de cada pedido
-		  	var texto = "" + "Cliente: " + $("#cliente").val() 
-		  	+ " - Pedido: " + $("#prato").val() + "<br>";
-		  	
-		  	//adiciona o pedido ao painel
-	   		$(".painel_corpo").append(texto);
-
-	   		//limpa as caixas de texto
-	   		$("#cliente").val("");
-	   		$("#prato").val("");
-
-  	}); //fim click
+	
 
 });//fim $(function)
 

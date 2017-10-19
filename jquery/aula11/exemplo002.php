@@ -61,28 +61,6 @@
 <script>
 $(function(){
 		
-	$("#btn1").click(function(){
-		//pega o valor da caixa #cor1 e guarda em c
-		var c = $('#cor1').val();
-		//atribui à propriedade background-color
-		$("#pn1").css({'border-width':c});	
-	});
-
-	$("#btn2").click(function(){
-		//pega o valor da caixa #cor1 e guarda em c
-		var c = $('#cor2').val();
-		//atribui à propriedade background-color
-		$("#pn1").css({'border-color':c});	
-	});
-
-	//evento disparado quando se muda o valor da caixa select
-	$("#tipoborda").change(function(){
-		//pega o valor da caixa #cor1 e guarda em c 
-		var c = $("#tipoborda").val();
-		//atribui à propriedade background-color
-		$("#pn1").css({'border-style':c});	
-	});
-
 
 });
 </script>

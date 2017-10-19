@@ -55,15 +55,7 @@
 <script>
 $(function(){
 	
-	$("#btn1").click(function(){
-		  	$(".painel_corpo").addClass('atencao');
 
-  	}); //fim click
-
-  	$("#btn2").click(function(){
-		  	$(".painel_corpo").removeClass('atencao');
-
-  	}); //fim click
 
 });//fim $(function)
 

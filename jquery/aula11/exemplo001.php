@@ -53,19 +53,7 @@
 <script>
 $(function(){
 		
-	$("#btn1").click(function(){
-		//pega o valor da caixa #cor1 e guarda em c
-		var c = $('#cor1').val();
-		//atribui à propriedade background-color
-		$("#pn1 .painel_cabeca").css({'background-color':c});	
-	});
-
-	$("#btn2").click(function(){
-		//pega o valor da caixa #cor1 e guarda em c
-		var c = $('#cor2').val();
-		//atribui à propriedade background-color
-		$("#pn1 .painel_cabeca").css({'color':c});	
-	});
+	
 
 
 });

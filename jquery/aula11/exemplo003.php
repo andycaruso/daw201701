@@ -46,31 +46,6 @@
 <script>
 $(function(){
 
-	//click do botao
-	$("#btn1").click(function(){
-
-		//pega o valor da caixa
-		var texto = $("#texto").val();
-		//converte o objeto texto em um string
-		texto = texto.toString();
-
-		//guarda em comprimento o tamanho da string
-		var comprimento = texto.length;
-
-		//coloca o valor na caixa
-		$("#comprimento").val(comprimento);
-
-		//retira espacos em branco do string
-		texto = texto.trim();
-
-		//guarda em comprimento o tamanho da string
-		comprimento = texto.length;
-
-		//coloca o valor na caixa
-		$("#comprimento2").val(comprimento);
-
-  	}); //fim click
-
 });//fim $(function)
 
 </script>
