@@ -42,7 +42,7 @@
 	<button id="btn2">Muda a cor do título do painel 1</button> <br>
 	<hr>
 	<div class="painel" id="pn1">
-		<div class="painel_cabeca">
+		<div class="painel_cabeca" id="meupainel">
 			Painel 1
 		</div>
 		<div class="painel_corpo">
@@ -51,12 +51,33 @@
 	</div>
 	
 <script>
+//funçao executada automaticamente após todo o 
+//documento ser carregado
 $(function(){
-		
 	
+$('#btn1').click(function() {
+	//guarda na variavel c o valor 
+	//da caixa de id=cor1
+	var c = $('#cor1').val();
 
+	//muda o estilo ccs do id=meupainel
+	$('#meupainel').css({'background-color':c});
+	//$('#pn1 .painel_cabeca').hide();
+});	
+	
+$('#btn2').click(function() {
+	//guarda na variavel c o valor 
+	//da caixa de id=cor2
+	var c = $('#cor2').val();
+
+	//muda o estilo ccs do id=meupainel
+	$('#meupainel').css({'color':c});
+	//$('#pn2 .painel_cabeca').hide();
+});	
 
 });
+
+
 </script>
 <hr><a href="exemplo002.php">Exemplo 2</a>
 </body>
