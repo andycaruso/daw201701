@@ -54,8 +54,19 @@
 	</div>
 <script>
 $(function(){
-	
+	$('#btn1').click(function() {
+		//adiciona a classe .atencao
+		//a todo objeto que for da classe
+		//.painel_corpo
+		$('.painel_corpo').addClass('atencao');
+	});
 
+$('#btn2').click(function() {
+		//remove a classe .atencao
+		//a todo objeto que for da classe
+		//.painel_corpo
+		$('.painel_corpo').removeClass('atencao');
+});
 
 });//fim $(function)
 
