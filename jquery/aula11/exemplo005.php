@@ -54,9 +54,19 @@
 <script>
 $(function(){
 	$('#btn1').click(function() {
-		//adiciona um novo elemento ao(s)
-		//objeto(s) de classe .painel_corpo
-		$('.painel_corpo').append('texto<br>');
+		//pega os valores das caixas 
+		//cliente e prato e guarda nas variaveis
+		//respectivas
+		var cliente = $('#cliente').val();
+		var prato = $('#prato').val();
+
+		//append() adiciona um novo elemento HTML
+		// ao(s) objeto(s) de classe .painel_corpo
+		$('.painel_corpo').append(cliente + ' : ' + prato + '<br>');
+
+		 //esvazia as caixas de input 
+		 $('#cliente').val('');
+		 $('#prato').val('');
 
 	});
 	
