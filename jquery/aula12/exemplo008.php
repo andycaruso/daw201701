@@ -33,52 +33,67 @@
 			overflow:auto;
 		}
 		
+		.minhaLista {
+			list-style-type: none;
+			margin:0;
+			padding:0;
+		}
 	</style>
 </head>
 <body>
-<h1>Modifique para que o programa não aceite cliente em branco!</h1>
+<h1>Carregando cidades de um estado via AJAX</h1>
 	<form id="form1" method="post">
-		<h2>Criar pedido</h2>
-		Cliente:<input type="text" id="cliente" name="cliente"><br>
-		Pedido<input type="text" id="prato" name="prato">
-		<input type="button" id="btn1" value="enviar">
-	</form>
+	
 	<div class="painel" id="pn1">
 		<div class="painel_cabeca">
-			
+			Cidades e Estados
 		</div>
 		<div class="painel_corpo">
+			<select id="ufcidade"></select>
+			<select id="cidades"></select>
 		</div>
 	</div>
+
+	</form>
 <script>
+
+
+
+//jquery chamado quando a página termina de carregar
 $(function(){
 	
-	$("#btn1").click(function(){
-		
-		  $.post( "inclui_pedido.php", $("#form1").serialize())
+//////////////////////////////////
+//função para carregamento dos dados
+function carregaCidades(){
+	
+	var estado = $('#ufcidade').val();
+	//faz uma requisção GET ao PHP passando a variaverl nomeCliente
+	$.get("lista_cidades_estado.php",{ufcidade:estado})
 		  .done(function(data) { //tudo certo com a requiscao 
-		  	
-		  	//monta o texto de cada pedido na tela
-		  	var texto = "" + "Cliente: " + $("#cliente").val() 
-		  	+ " - Pedido: " + $("#prato").val() + "<br>";
-		  	
-		  	//adiciona o pedido ao painel
-	   		$(".painel_corpo").append(texto);
-
-	   		//limpa as caixas de texto
-	   		$("#cliente").val("");
-	   		$("#prato").val("");
+		  	//mostra dos dados retornados pelo PHP 
+		  	//no painel
+	   		$("#cidades").html(data);
 		  })
 		  .fail(function(data) { //erro na requisicao
 		   	 $(".painel_corpo").html("erro requisicao");
 		  }); //fim post
-		
-		
+}
+//////////////////////////////////
+
+	//carrega os estados na div
+	$("#ufcidade").load("lista_estados.php");		
+
+  	//change do select
+	$("#ufcidade").change(function(){
+		  //chama a função 
+		  carregaCidades();
   	}); //fim click
 
+	
 });//fim $(function)
 
 </script>
-
+<hr><a href="exemplo007.php">Exemplo 7</a> -
+ <a href="exemplo009.php">Exemplo 9</a>
 </body>
 </html>
