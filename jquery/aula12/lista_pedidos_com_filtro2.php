@@ -25,9 +25,9 @@ require("funcoes.php");
         $sqlFiltro2 = " where prato LIKE '$prato%'";
       }
     }
+    //monta o filtro final
     $sqlFiltro = $sqlFiltro1 . $sqlFiltro2;
     
-
     $sql = "SELECT cliente,prato FROM pedido $sqlFiltro order by cliente";
     $declaracao = $link->prepare($sql);
     

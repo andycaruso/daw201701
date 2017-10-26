@@ -43,7 +43,7 @@
 <body>
 <h1>Fazendo uma busca dinâmica no banco através de AJAX</h1>
 	<form id="form1" method="post">
-		Filtrar clinte:<input type="text" id="cliente" name="cliente"><br>
+		Filtrar cliente:<input type="text" id="cliente" name="cliente"><br>
 		Filtrar prato:<input type="text" id="prato" name="prato"><br>
 		<input type="button" id="btn1" value="enviar">
 	</form>
