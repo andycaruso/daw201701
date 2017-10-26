@@ -9,7 +9,6 @@ require("funcoes.php");
     $sqlFiltro = "";
     $sqlFiltro1 = "";
     $sqlFiltro2 = "";
-    
     //monta o filtro 
     //se cliente foi definido
     if (strlen($cliente) > 0){

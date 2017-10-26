@@ -28,16 +28,11 @@
 
 		.painel_corpo {
 			width:100%;
-			height:150px;
+			height:950px;
 			padding:2px;
 			overflow:auto;
 		}
 		
-		.minhaLista {
-			list-style-type: none;
-			margin:0;
-			padding:0;
-		}
 	</style>
 </head>
 <body>
@@ -68,15 +63,13 @@ function carregaDados(){
 	//carrega dados no formato jSON passando como parametro a variavel valor
 	$.getJSON("lista_pedidos_com_json.php",{cliente:valor},function(data){
 	  var items = [];
+	  var linha = "";
 	  //separa cada elemento em indice e valor
 	  $.each( data, function( k, v ) {
-	    items.push("Cliente: " + v.cliente + " - Pedido: " + v.prato + "<br>");
+	    linha = "Cliente: " + v.cliente + " - Pedido: " + v.prato + "<br>";
+	    $(".painel_corpo").append(linha);
 	  });
 	 
-	  $( "<ul/>", {
-	    "class": "minhaLista",
-	    html: items.join( "" )
-	  }).appendTo(".painel_corpo");
 	});
 }
 //////////////////////////////////

@@ -65,7 +65,6 @@ $(function(){
 //////////////////////////////////
 //função para carregamento dos dados
 function carregaCidades(){
-	
 	var estado = $('#ufcidade').val();
 	//faz uma requisção GET ao PHP passando a variaverl nomeCliente
 	$.get("lista_cidades_estado.php",{ufcidade:estado})

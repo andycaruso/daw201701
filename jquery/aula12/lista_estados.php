@@ -27,9 +27,8 @@ require("funcoes.php");
          geraTag("option",0,array("value"=>"$cdestado"));
          echo("$nmestado");
          geraTag("option",1);
-      
+         //echo ("<option value='$cdestado'>$nmestado</option>");
       }
-   
     }
     else {
       echo("nenhum registro localizado");

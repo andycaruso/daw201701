@@ -40,7 +40,7 @@ else {
     
     }
     else {
-      echo("nenhum registro localizado");
+      echo("");
     }
   }//fim try
   catch (PDOException $e) {
