@@ -5,10 +5,9 @@ require("../funcoes_arquivos.php");
 
 $erros = array();
 //testa se $_REQUEST foi criado pelo envio de um form
-if (isset($_REQUEST['acao'])) {
+
 	//guarda em varíaveis do PHP cada valor correspondente 
 	//do vetor associativo $_REQUEST[]
-	$acao = $_REQUEST['acao'];
 	$nome = $_REQUEST['nome'];
 	if (strlen($nome) == 0){
 		//array_push cria um novo elemento em um vetor
@@ -32,7 +31,7 @@ if (isset($_REQUEST['acao'])) {
 	
 	//testa erros 
 	if (count($erros) > 0){
-		require("frm_inclui.php");
+		
 		echo ("Houve " . count($erros) . " erro(s).<br>");
 		echo ("Verifique campos obrigatórios:");
 		foreach ($erros as $v) {
@@ -42,8 +41,7 @@ if (isset($_REQUEST['acao'])) {
 		exit();
 	}
 
-	//testa se $_REQUEST['acao'] é igual a 'enviar' 
-	if ($acao == 'enviar'){
+	
 		//formata a data para o padrao mysql
 		$nascimento = converteData($nascimento);
 
@@ -61,14 +59,10 @@ if (isset($_REQUEST['acao'])) {
 	    $sexo = '';
 	    $nascimento = '';
 	    $cdcidadepessoa = '';
+	    echo ("Inclusão OK!");
 	  }
 	  catch (PDOException $e) {
 	    print $e->getMessage() . $sql;
 	  }
-	}//fim if($acao ...
-}//fim if isset...
-require("frm_inclui.php");
-
-
-
+	
 ?>

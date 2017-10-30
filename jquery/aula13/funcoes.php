@@ -1,5 +1,5 @@
 <?php
-require("conecta.php");
+require_once("conecta.php");
 //desabilita warnings 
 //error_reporting("E_ALL & ~NOTICE");
 

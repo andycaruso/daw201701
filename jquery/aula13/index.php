@@ -18,7 +18,7 @@
 		.painel {
 			border:1px solid gray;
 			width:20vw;
-			height:99vh;
+			height:100vh;
 			background-color:white;
 			float:left;
 			
@@ -42,11 +42,21 @@
 
 		.painel_principal {
 			width:80vw;
-			height:99vh;
+			height:85vh;
 			padding:2px;
 			overflow:auto;
 			float:left;
 			border:1px solid gray;
+		}
+		.painel_mensagem {
+			width:80vw;
+			height:15vh;
+			padding:2px;
+			overflow:auto;
+			float:left;
+			border:1px solid gray;
+			background-color:gray;
+			color:white;
 		}
 		
 		.minhaLista {
@@ -56,28 +66,29 @@
 		}
 	</style>
 </head>
-<bodu>
-	<div class="painel" id="pn1">
-		<div class="painel_cabeca">
-			<h2>Pessoas</h2>
-		</div>
-		<div class="painel_corpo">
-			<ul>
-				<li><a href="pessoa/inclui.php">Incluir</a></li>
-				<li><a href="pessoa/consulta.php">Consultar</a></li>
-			</ul>
-			<h2>Matrículas</h2>
-			<ul>
-				<li><a href="matricula/inclui.php">Incluir</a></li>
-				<li><a href="matricula/consulta.php">Consultar</a></li>
-			</ul>
-			<h2>Cidades</h2>
-			<ul>
-				<li><a href="cidade/inclui.php">Incluir</a></li>
-				<li><a href="cidade/consulta.php">Consultar</a></li>
-			</ul>
-		</div>
-		
+<body>
+<div class="painel" id="pn1">
+	<div class="painel_cabeca">
+		<h2>Pessoas</h2>
+	</div>
+	<div class="painel_corpo">
+		<ul class="minhaLista">
+			<li><button id="btpessoa">Listar pessoas</button></li>
+			<li><button id="btIncPessoa">Incluir pessoas</button></li>
+		</ul>
+		<h2>Matrículas</h2>
+		<ul>
+			<li><a href="matricula/inclui.php">Incluir</a></li>
+			<li><a href="matricula/consulta.php">Consultar</a></li>
+		</ul>
+		<h2>Cidades</h2>
+		<ul>
+			<li><a href="cidade/inclui.php">Incluir</a></li>
+			<li><a href="cidade/consulta.php">Consultar</a></li>
+		</ul>
+	</div>
+</div>
+	<div class="painel_mensagem">mensagem
 	</div>
 	<div class="painel_principal">
 	</div>
@@ -106,7 +117,16 @@ function carregaDados(){
 //jquery chamado quando a página termina de carregar
 $(function(){
 	
+	//lista pessoas
+	$("#btpessoa").click(function() {
+		$(".painel_principal").load("pessoa/consulta.php");
+	});
 	
+	//inclui pessoas
+	$("#btIncPessoa").click(function() {
+		$(".painel_principal").load("pessoa/frm_inclui.php");
+	});
+
 	
 	
 });//fim $(function)
