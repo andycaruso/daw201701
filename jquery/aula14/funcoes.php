@@ -1,7 +1,7 @@
 <?php
 require_once("conecta.php");
 //desabilita warnings 
-//error_reporting("E_ALL & ~NOTICE");
+error_reporting("E_ALL & ~NOTICE");
 
 ///////////////////////////////
 //E1:nome da tag 

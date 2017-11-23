@@ -26,7 +26,6 @@ require_once("../funcoes.php");
 	
 //jquery chamado quando a página termina de carregar
 $(function(){
-
 		//validacao
 		 $("#form1").validate({
 	  			rules: {
@@ -43,7 +42,9 @@ $(function(){
 	    			sexo: {
 	    				required: true
 	    			}
-
+				},
+				messages: {
+					cidade: "Escolha uma cidade"
 				}
 			});
 		

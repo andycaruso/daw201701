@@ -1,7 +1,8 @@
 <?php
 require_once("../funcoes.php");
 require_once("../funcoes_arquivos.php");
-
+	
+	
 	$nome = $_REQUEST['nome'];
 	$nascimento = $_REQUEST['nascimento'];
 	$sexo = $_REQUEST['sexo'];
