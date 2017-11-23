@@ -2,8 +2,10 @@
 require_once("../funcoes.php");
 require_once("../funcoes_arquivos.php");
 	
-	
-	$nome = $_REQUEST['nome'];
+	//o comando mysql_escape_string deve ser chamado sempre
+	//que vamos mandar um campo texto para o banco de dados
+	//a fim de corrigir possiveis problemas com os caracteres ' e  "
+	$nome = mysql_escape_string($_REQUEST['nome']);
 	$nascimento = $_REQUEST['nascimento'];
 	$sexo = $_REQUEST['sexo'];
 	$cdcidadepessoa = $_REQUEST['cidade'];
@@ -20,10 +22,7 @@ require_once("../funcoes_arquivos.php");
 	    echo ("Pessoa incluída com sucesso!");
 	    enviaFoto("fotos/",$id,"imagem");
 	    //limpar as variáveis depois do cadastro
-	    $nome = '';
-	    $sexo = '';
-	    $nascimento = '';
-	    $cdcidadepessoa = '';
+	    
 	    echo ("Inclusão OK!");
 	  }
 	  catch (PDOException $e) {
