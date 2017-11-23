@@ -1,4 +1,5 @@
 <?php
+require_once("../funcoes.php");
 
 ?>
 <style type="text/css">
@@ -23,18 +24,18 @@
 
 <script type="text/javascript">
 	
-	//jquery chamado quando a página termina de carregar
+//jquery chamado quando a página termina de carregar
 $(function(){
 	
 	$("#btCadastrar").click(function() {
-		$.post("pessoa/inclui.php", $("#form1").serialize())
-  .done(function(data) { //tudo certo com a requiscao 	
-  		$(".painel_mensagem").html(data);
-  })
-  .fail(function(data) { //erro na requisicao
-   	 $(".painel_mensagem").html("erro requisicao");
- }); //fim post
-	});
+			$.post("pessoa/inclui.php", $("#form1").serialize())
+	  .done(function(data) { //tudo certo com a requiscao 	
+	  		$(".painel_mensagem").html(data);
+	  })
+	  .fail(function(data) { //erro na requisicao
+	   	 $(".painel_mensagem").html("erro requisicao");
+	 }); //fim post
+});
 
 	
 	

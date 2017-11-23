@@ -41,7 +41,15 @@
 		}
 
 		.painel_principal {
-			width:80vw;
+			width:40vw;
+			height:85vh;
+			padding:2px;
+			overflow:auto;
+			float:left;
+			border:1px solid gray;
+		}
+		.painel_form {
+			width:40vw;
 			height:85vh;
 			padding:2px;
 			overflow:auto;
@@ -92,26 +100,9 @@
 	</div>
 	<div class="painel_principal">
 	</div>
+	<div class="painel_form">
+	</div>
 <script>
-
-
-//////////////////////////////////
-//função para carregamento dos dados
-function carregaDados(){
-	//guarda o valor da caixa cliente na variavel nomeCliente
-	var nomeCliente = $("#cliente").val();
-	//faz uma requisção GET ao PHP passando a variaverl nomeCliente
-	$.get("lista_pedidos_com_filtro.php",{cliente:nomeCliente})
-		  .done(function(data) { //tudo certo com a requiscao 
-		  	//mostra dos dados retornados pelo PHP 
-		  	//no painel
-	   		$(".painel_corpo").html(data);
-		  })
-		  .fail(function(data) { //erro na requisicao
-		   	 $(".painel_corpo").html("erro requisicao");
-		  }); //fim post
-}
-//////////////////////////////////
 
 
 //jquery chamado quando a página termina de carregar

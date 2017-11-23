@@ -1,10 +1,8 @@
 <?php
-require("../funcoes.php");
-require("../funcoes_arquivos.php");
-
+require_once("../funcoes.php");
+require_once("../funcoes_arquivos.php");
 
 $erros = array();
-//testa se $_REQUEST foi criado pelo envio de um form
 
 	//guarda em varíaveis do PHP cada valor correspondente 
 	//do vetor associativo $_REQUEST[]
